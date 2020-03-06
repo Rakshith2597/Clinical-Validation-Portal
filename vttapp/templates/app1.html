@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block importcss %}
+<link rel="stylesheet" href="{% static 'css/custom_style.css' %}"  />
+
+{% endblock %}
+
+{% block headersection %}
+  <header id="header">
+      <!-- Nav -->
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+          </ul>
+        </nav>
+
+<!--     </div> -->
+  </header>
+{% endblock %}
+
+{% block heading %}
+{% endblock %}
+
+{% block tiles %}
+
+
+
+<div class="container_custom">  
+  <span >
+  </span>
+
+  <span class="image">
+    <img id="myImg1" src="{% static 'images/fulls/P_00177.png' %}" alt="" height="326" width="512"/>
+      <div class="content">
+      <p align="center"> Image (a) </p>
+    </div>
+  </span>
+  <div id="myModal1" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption1"> Image (a)</div>
+</div>
+  
+  <span class="image">
+    <img id="myImg2" src="{% static 'images/fulls/16_decom_P_00177.png' %}" alt="" height="326" width="512"/>
+      <div class="content">
+      <p align="center"> Image (b) </p>
+    </div>
+  </span>
+  <div id="myModal2" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img02">
+  <div id="caption2"> Image (b)</div>
+</div>
+
+{% endblock %}
+
+{% block jsimport %} 
+<script src="{% static 'js/custom_script.js' %}"></script>
+
+{% endblock %}
