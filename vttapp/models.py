@@ -3,7 +3,7 @@ import uuid
 # Create your models here.
 class MR(models.Model):
 	''' Model representing Image to be displayed '''
-	q_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	real_image = models.FileField(upload_to='realimage',blank=False)
 	fake_image = models.FileField(upload_to='fakeimage',blank=False)
@@ -14,7 +14,7 @@ class MR(models.Model):
 
 class CT(models.Model):
 	''' Model representing Image to be displayed '''
-	q_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	real_image = models.FileField(upload_to='realimage',blank=False)
 	fake_image = models.FileField(upload_to='fakeimage',blank=False)
@@ -25,7 +25,7 @@ class CT(models.Model):
 
 class XR(models.Model):
 	''' Model representing Image to be displayed '''
-	q_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	real_image = models.FileField(upload_to='realimage',blank=False)
 	fake_image = models.FileField(upload_to='fakeimage',blank=False)

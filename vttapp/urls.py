@@ -5,7 +5,7 @@ urlpatterns = [
 	path('', views.index, name='index'),
 	path('CT/', views.VTTApp.as_view(), name='CT'),
 	path('MR/', views.VTTApp.as_view(), name='MR'),
-	path('XR/', views.XR, name='XR'),
+	path('XR/', views.XR_func, name='XR'),
 
 
 ]

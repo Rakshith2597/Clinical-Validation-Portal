@@ -32,9 +32,12 @@
   </span>
 
   <span class="image">
-    <img id="myImg1" src="{% static 'images/fulls/P_00177.png' %}" alt="" height="326" width="512"/>
+    <img id="myImg1" src="{{image1_url}}" alt="" height="326" width="512"/>
       <div class="content">
       <p align="center"> Image (a) </p>
+<!--       <p align="center"> {{num_pairs}} </p>
+      <p align="center"> {{realimg_url}} </p>
+      <p align="center"> {{fakeimg_url}} </p> -->
     </div>
   </span>
   <div id="myModal1" class="modal">
@@ -44,7 +47,7 @@
 </div>
   
   <span class="image">
-    <img id="myImg2" src="{% static 'images/fulls/16_decom_P_00177.png' %}" alt="" height="326" width="512"/>
+    <img id="myImg2" src="{{image2_url}}" alt="" height="326" width="512"/>
       <div class="content">
       <p align="center"> Image (b) </p>
     </div>
