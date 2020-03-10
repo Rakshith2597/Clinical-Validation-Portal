@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
 	path('', views.index, name='index'),
-	path('CT/', views.VTTApp.as_view(), name='CT'),
-	path('MR/', views.VTTApp.as_view(), name='MR'),
+	path('CT/', views.XR_func, name='CT'),
+	path('MR/', views.XR_func, name='MR'),
 	path('XR/', views.XR_func, name='XR'),
 
 

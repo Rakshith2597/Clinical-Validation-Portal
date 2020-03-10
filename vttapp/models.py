@@ -35,11 +35,10 @@ class XR(models.Model):
 		return f'XR from {self.dataset}'
 
 class Testresult(models.Model):
-	s_id = models.UUIDField(primary_key=True)
-	username = models.CharField(max_length=50)
-	dataset = models.CharField(max_length=50)
-	selcted_image = models.CharField(max_length=50)
-	confidence = models.IntegerField()
+	username = models.CharField(max_length=50, default="")
+	dataset = models.CharField(max_length=50, default="")
+	selcted_image = models.CharField(max_length=50, default="")
+	confidence = models.IntegerField(default=0)
 
 	def __str__(self):
 
