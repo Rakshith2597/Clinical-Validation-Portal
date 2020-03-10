@@ -3,6 +3,8 @@ from django.views import generic
 from vttapp.models import XR
 import random
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -23,9 +25,11 @@ class VTTApp(generic.View):
 # def MR(request):
 # 	return render(request,'generic.html')
 
+@login_required
 def XR_func(request):
 	num_pairs = XR.objects.all().count()
-	i = num_pairs-1
+	# for i in range(1,num_pairs):
+	# 	img_id = 100 + i 
 
 	img_field = XR.objects.get(q_id = 101)
 	# initial_path1 = img_field.real_image.path

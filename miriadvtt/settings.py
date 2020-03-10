@@ -127,3 +127,8 @@ MEDIA_URL = '/media/'
 #To handle uploaded images
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#handle login
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

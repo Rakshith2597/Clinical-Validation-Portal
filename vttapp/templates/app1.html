@@ -23,6 +23,13 @@
 {% block heading %}
 {% endblock %}
 
+{% block userdetails%}
+
+{% if user.is_authenticated %}
+<p> Welcome Dr.{{ user.get_username }}, </p>
+{% endif %} 
+
+{% endblock %}
 {% block tiles %}
 
 

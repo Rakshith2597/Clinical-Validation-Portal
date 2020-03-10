@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block userdetails %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+  
+{% endblock %}
+
+{% block tiles %}
+
+
+
+  <div class="inner">
+
+  
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+  <div class="fields">
+    <div class="field">
+      <input type="text" name="username" id="username" placeholder="Username" />  
+    </div>
+    <div class="field">
+      <input type="password" name="password" id="password" placeholder="Password" />  
+    </div>
+<!--     <div class="field half">
+      <input type="email" name="email" id="email" placeholder="Email" />
+    </div>
+ -->    <!-- <div class="field">
+      <textarea name="message" id="message" placeholder="Message"></textarea>
+    </div> -->
+  </div>
+  <ul class="actions">
+    <li><input type="submit" value="Login" class="primary" /></li>
+    <li><input type="hidden" name="next" value="{{ next }}" /> </li>
+  </ul>
+</form>
+</div>
+
+<!--   <form method="post" action="{% url 'login' %}">
+    
+    <table align="center">
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form> -->
+  
+<!--   {# Assumes you setup the password_reset view in your URLconf #}
+  <p><a href="{% url 'password_reset' %}">Lost password?</a></p> -->
+  
+{% endblock %}
+
+{%block contact%}
+
+
+{%endblock%}
