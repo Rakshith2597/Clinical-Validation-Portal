@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 def index(request):
 	return render(request,'index.html')
 
+
+@login_required
 def XR_func(request):
 	num_pairs = XR.objects.all().count()
 	img_field = XR.objects.get(q_id = 101)
