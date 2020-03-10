@@ -33,3 +33,14 @@ class XR(models.Model):
 	def __str__(self):
 		'''String representing the model object'''
 		return f'XR from {self.dataset}'
+
+class Testresult(models.Model):
+	s_id = models.UUIDField(primary_key=True)
+	username = models.CharField(max_length=50)
+	dataset = models.CharField(max_length=50)
+	selcted_image = models.CharField(max_length=50)
+	confidence = models.IntegerField()
+
+	def __str__(self):
+
+		return f'Result Added of {self.dataset}'

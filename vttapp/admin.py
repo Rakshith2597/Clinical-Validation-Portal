@@ -9,3 +9,6 @@ admin.site.register(XR)
 
 from .models import CT
 admin.site.register(CT)
+
+from .models import Testresult
+admin.site.register(Testresult)
