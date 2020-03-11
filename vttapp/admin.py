@@ -12,3 +12,6 @@ admin.site.register(CT)
 
 from .models import Testresult
 admin.site.register(Testresult)
+
+from .models import UserProgress
+admin.site.register(UserProgress)

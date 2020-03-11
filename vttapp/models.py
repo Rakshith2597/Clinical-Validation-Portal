@@ -43,3 +43,14 @@ class Testresult(models.Model):
 	def __str__(self):
 
 		return f'Result Added of {self.dataset}'
+
+class UserProgress(models.Model):
+	username = models.CharField(max_length=50,)
+	# progress = models.IntegerField(default=0)
+	mr_progress = models.IntegerField(default=0)
+	ct_progress = models.IntegerField(default=0)
+	xr_progress = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return f'progress updated'

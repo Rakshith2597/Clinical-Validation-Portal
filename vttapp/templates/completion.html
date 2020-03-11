@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block userdetails%}
+
+{% if user.is_authenticated %}
+<p> Dr.{{ user.get_username }}, You have completed clinical validation for this modality.  </p>
+{% endif %} 
+
+{% endblock %}
