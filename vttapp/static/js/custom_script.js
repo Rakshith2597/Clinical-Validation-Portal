@@ -38,3 +38,5 @@ var span = document.getElementsByClassName("close");
 span[1].onclick = function() { 
   modal.style.display = "none";
 }
+
+

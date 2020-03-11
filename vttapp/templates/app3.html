@@ -39,12 +39,9 @@
   </span>
 
   <span class="image">
-    <img id="myImg1" src="{{image1_url}}" alt="" height="326" width="512"/>
+    <img id="myImg1" src="{{image1_url}}" alt="" height="326" width="512" data-toggle="tooltip" title="Click to enlarge"/>
       <div class="content">
       <p align="center"> Image (a) </p>
-<!--       <p align="center"> {{num_pairs}} </p>
-      <p align="center"> {{realimg_url}} </p>
-      <p align="center"> {{fakeimg_url}} </p> -->
     </div>
   </span>
   <div id="myModal1" class="modal">
@@ -54,7 +51,7 @@
 </div>
   
   <span class="image">
-    <img id="myImg2" src="{{image2_url}}" alt="" height="326" width="512"/>
+    <img id="myImg2" src="{{image2_url}}" alt="" height="326" width="512" data-toggle="tooltip" title="Click to enlarge"/>
       <div class="content">
       <p align="center"> Image (b) </p>
     </div>
@@ -68,16 +65,28 @@
 </div>
 
 <div>
-  {%}
+<style>
+form {
+    width: 500px;
+    margin-left: 400px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+</style>
 <form method="post" action="{% url 'CT' %}">
     {% csrf_token %}
     <div class="form-group row">
-      <font color="black">Which image do you think was compressed?</font> 
-
+      <font color="black">Which image do you think was compressed? Select the option below and slide the confidence meter.</font> 
     </div>
-    <fieldset class="form-group">
+  </Br>
+    <fieldset class="form-group row">
       <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-6">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios1" value={{image1_name}} checked>
             <label class="form-check-label" for="gridRadios1">
@@ -90,14 +99,14 @@
               <font color="black">Image (b)</font> 
             </label>
           </div>
-          <div>
-            <div class="slidecontainer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="confidence" name= "confidence">
-            <p>Confidence level: <span id="demo"></span></p>
-          </div>
-          </div>
-          </Br>
-
+        </div>
+        <div class="col-sm-4">
+          <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="confidence" name= "confidence">
+          <p>Confidence level: <span id="demo"></span></p>
+          </div>  
+        </div>
+        <div class="col-sm-2" align="right">
           <button type="submit" class="primary ">NEXT</button>
         </div>
       </div>

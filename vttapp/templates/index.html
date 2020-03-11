@@ -4,7 +4,7 @@
 <header>
 	<h1> Project MIRIAD <br />
 	Clinical validation by <a href="https://en.wikipedia.org/wiki/Visual_Turing_Test">Visual Turing Test</a>.</h1>
-	<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+	<p>Select a modality from below on which you wish to start the test. Enter the username and password provided to you whenever prompted.</p>
 </header>
 
 {% endblock %}
@@ -18,7 +18,7 @@
 	<a href="{% url 'CT' %}">
 		<h2>CT</h2>
 		<div class="content">
-			<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+			<p>Click to start test for CT images.</p>
 		</div>
 	</a>
 </article>
@@ -29,7 +29,7 @@
 	<a href="{% url 'MR' %}">
 		<h2>MR</h2>
 		<div class="content">
-			<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+			<p>Click to start test for MR images.</p>
 		</div>
 	</a>
 </article>
@@ -40,43 +40,11 @@
 	<a href="{% url 'XR' %}">
 		<h2>XR</h2>
 		<div class="content">
-			<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+			<p>Click to start test for XR images.</p>
 		</div>
 	</a>
 </article>
-<!-- <article class="style4">
-	<span class="image">
-		<img src="{% static 'images/pic12.jpg' %}" alt="" />
-	</span>
-	<a href="generic.html">
-		<h2>Mammograms</h2>
-		<div class="content">
-			<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-		</div>
-	</a>
-</article> -->
-
 {% endblock %}
-
-{% block contact %}
-<!-- <h2>Get in touch</h2>
-<form method="post" action="#">
-	<div class="fields">
-		<div class="field half">
-			<input type="text" name="name" id="name" placeholder="Name" />
-		</div>
-		<div class="field half">
-			<input type="email" name="email" id="email" placeholder="Email" />
-		</div>
-		<div class="field">
-			<textarea name="message" id="message" placeholder="Message"></textarea>
-		</div>
-	</div>
-	<ul class="actions">
-		<li><input type="submit" value="Send" class="primary" /></li>
-	</ul>
-</form> -->
-{%endblock%}
 
 
 {% block footer %}
@@ -86,10 +54,10 @@
 <section>
 	<h2>Follow</h2>
 	<ul class="icons">
-		<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-		<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-		<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-		<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+		<li><a href="https://iitkliv.github.io" class="icon solid style2 fa-laptop"><span class="label">Website</span></a></li>
+		<li><a href="https://github.com/iitkliv" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+		<li><a href="https://www.youtube.com/channel/UCq2X0_i9aXhiDA45MlS4XcQ" class="icon brands style2 fa-youtube"><span class="label">Youtube</span></a></li>
+		<!-- <li><a href="" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li> -->
 	</ul>
 </section>
 {% endblock %}
