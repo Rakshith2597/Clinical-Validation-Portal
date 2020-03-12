@@ -3,6 +3,7 @@ from django.views import generic
 from vttapp.models import MR,CT,XR,Testresult,UserProgress
 import random
 from django.conf import settings
+from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
@@ -158,3 +159,33 @@ def CT_func(request):
 		return render(request,'app3.html',context)
 	else:
 		return render(request,'completion.html')		
+
+def response_func(request):
+	t_response = Testresult.objects.all()
+	real_count = Testresult.objects.filter(selcted_image__istartswith='Real').count()
+	fake_count = Testresult.objects.filter(selcted_image__istartswith='Fake').count()
+	avg_confidence = Testresult.objects.all().aggregate(Avg('confidence'))
+	# real_avg =real_avg_obj.avg()
+	# real_count = real_obj
+	context = {
+	'real_count' : real_count,
+	'fake_count' : fake_count,
+	'avg_confidence' : avg_confidence['confidence__avg'],
+	'display' : "none",
+
+
+	}
+
+	if request.method == 'POST':
+			context = {
+			'query_results' : t_response,
+			'real_count' : real_count,
+			'fake_count' : fake_count,
+			'avg_confidence' : avg_confidence['confidence__avg'],
+			'display' : "block",
+
+
+			}
+
+
+	return render(request,'response.html',context)

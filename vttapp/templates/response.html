@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{%block heading%}
+<header>
+	<h1> Turing test response sheet <br />
+</header>
+{% endblock %}
+
+{%block tiles%}
+<table>
+	<tr>
+		<th> Dataset </th>
+		<th> Total Fail</th>
+		<th> Total Pass</th>
+		<th> Avg. Confidence</th>
+
+	</tr>
+	<tr>
+		<td> </td>
+		<td> {{real_count}}</td>
+		<td> {{fake_count}}</td>
+		<td> {{avg_confidence}}</td>
+
+	</tr>
+
+
+</table>
+<style>
+form {
+    width: 500px;
+    margin-left: 300px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+</style>
+<form method="post" action="{% url 'RF' %}">
+	{% csrf_token %}
+	        <div class="col-sm-2" align="right">
+          <button id="button1" type="submit" class="primary ">Detailed report</button>
+      </div>
+
+	</form>
+
+{% endblock %}
+
+
+{% if query_results %}
+{%block detailedtable%}
+<style>
+#detailedreport {
+	display: {{ display }};
+	/*visibility: hidden;*/
+}	
+
+</style>
+
+<div class="inner" id="detailedreport">
+	<section class="tiles">
+<table >
+    <tr>
+        <th>Username</th>
+        <th>Dataset</th>
+        <th>Selected Image </th>
+        <th> Confidence </th>
+    </tr>
+    {% for item in query_results %}
+    <tr> 
+        <td>{{ item.username }}</td>
+        <td>{{ item.dataset }}</td>
+        <td>{{ item.selcted_image }}</td>
+        <td>{{ item.confidence }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</section>
+</div>	
+{% endblock %}
+{% endif%}
+
