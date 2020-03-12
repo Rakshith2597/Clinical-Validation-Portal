@@ -20,14 +20,25 @@ def XR_func(request):
 		fakeimg_url = img_field.fake_image.url
 		realimg_name = img_field.real_image.name
 		fakeimg_name = img_field.fake_image.name
-		context = {
-		'num_pairs' : num_pairs,
-		'image1_url' : realimg_url,
-		'image2_url' : fakeimg_url,
-		'image1_name' : realimg_name,
-		'image2_name' : fakeimg_name,
-		'action' : "XR",
-		}
+		if usr_progress%3 != 0:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : realimg_url,
+			'image2_url' : fakeimg_url,
+			'image1_name' : realimg_name,
+			'image2_name' : fakeimg_name,
+			'action' : "XR",
+			}
+		else:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : fakeimg_url,
+			'image2_url' : realimg_url,
+			'image1_name' : fakeimg_name,
+			'image2_name' : realimg_name,
+			'action' : "XR",
+			}	
+
 
 		if request.method == 'POST':
 
@@ -59,14 +70,25 @@ def MR_func(request):
 		fakeimg_url = img_field.fake_image.url
 		realimg_name = img_field.real_image.name
 		fakeimg_name = img_field.fake_image.name
-		context = {
-		'num_pairs' : num_pairs,
-		'image1_url' : realimg_url,
-		'image2_url' : fakeimg_url,
-		'image1_name' : realimg_name,
-		'image2_name' : fakeimg_name,
-		'action' : "MR",
-		}
+		if usr_progress%3 != 0:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : realimg_url,
+			'image2_url' : fakeimg_url,
+			'image1_name' : realimg_name,
+			'image2_name' : fakeimg_name,
+			'action' : "XR",
+			}
+		else:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : fakeimg_url,
+			'image2_url' : realimg_url,
+			'image1_name' : fakeimg_name,
+			'image2_name' : realimg_name,
+			'action' : "XR",
+			}	
+
 
 		if request.method == 'POST':
 
@@ -98,14 +120,25 @@ def CT_func(request):
 		fakeimg_url = img_field.fake_image.url
 		realimg_name = img_field.real_image.name
 		fakeimg_name = img_field.fake_image.name
-		context = {
-		'num_pairs' : num_pairs,
-		'image1_url' : realimg_url,
-		'image2_url' : fakeimg_url,
-		'image1_name' : realimg_name,
-		'image2_name' : fakeimg_name,
-		'action' : "CT",
-		}
+		if usr_progress%3 != 0:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : realimg_url,
+			'image2_url' : fakeimg_url,
+			'image1_name' : realimg_name,
+			'image2_name' : fakeimg_name,
+			'action' : "XR",
+			}
+		else:
+			context = {
+			'num_pairs' : num_pairs,
+			'image1_url' : fakeimg_url,
+			'image2_url' : realimg_url,
+			'image1_name' : fakeimg_name,
+			'image2_name' : realimg_name,
+			'action' : "XR",
+			}	
+
 
 		if request.method == 'POST':
 
