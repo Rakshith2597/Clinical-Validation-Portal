@@ -4,6 +4,7 @@
 <header>
 	<h1> Turing test response sheet <br />
 </header>
+{{real_count}}
 {% endblock %}
 
 {%block tiles%}
@@ -15,13 +16,18 @@
 		<th> Avg. Confidence</th>
 
 	</tr>
-	<tr>
-		<td> </td>
-		<td> {{real_count}}</td>
-		<td> {{fake_count}}</td>
-		<td> {{avg_confidence}}</td>
+	
+    {% for item in response_table %}
+    <tr> 
+        <td>{{ item.dataset }}</td>
+        <td>{{ item.total_pass }}</td>
+        <td>{{ item.total_fail }}</td>
+        <td>{{ item.avg_confidence }}</td>
+    </tr>
 
-	</tr>
+    {% endfor %}
+    	
+
 
 
 </table>

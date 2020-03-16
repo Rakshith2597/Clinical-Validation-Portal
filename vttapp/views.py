@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import generic
-from vttapp.models import MR,CT,XR,Testresult,UserProgress
+from vttapp.models import MR,CT,XR,Testresult,UserProgress,ResponseSheet
 import random
 from django.conf import settings
 from django.db.models import Avg
@@ -44,7 +44,6 @@ def XR_func(request):
 		if request.method == 'POST':
 
 			form = Testresult()
-			# form2 = UserProgress()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
 				form.selcted_image = request.POST.get('selcted_image')
@@ -54,8 +53,6 @@ def XR_func(request):
 				usr_row.xr_progress = usr_progress+1
 				usr_row.save(update_fields=['xr_progress'])
 				form.save()
-				# count += 1
-				# return redirect(XR_func,count=count)
 		return render(request,'app1.html',context)
 	else:
 		return render(request,'completion.html')
@@ -94,7 +91,6 @@ def MR_func(request):
 		if request.method == 'POST':
 
 			form = Testresult()
-			# form2 = UserProgress()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
 				form.selcted_image = request.POST.get('selcted_image')
@@ -104,8 +100,6 @@ def MR_func(request):
 				usr_row.mr_progress = usr_progress+1
 				usr_row.save(update_fields=['mr_progress'])
 				form.save()
-				# count += 1
-				# return redirect(XR_func,count=count)
 		return render(request,'app2.html',context)
 	else:
 		return render(request,'completion.html')
@@ -144,7 +138,6 @@ def CT_func(request):
 		if request.method == 'POST':
 
 			form = Testresult()
-			# form2 = UserProgress()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
 				form.selcted_image = request.POST.get('selcted_image')
@@ -154,34 +147,40 @@ def CT_func(request):
 				usr_row.ct_progress = usr_progress+1
 				usr_row.save(update_fields=['ct_progress'])
 				form.save()
-				# count += 1
-				# return redirect(XR_func,count=count)
 		return render(request,'app3.html',context)
 	else:
 		return render(request,'completion.html')		
 
 def response_func(request):
 	t_response = Testresult.objects.all()
-	real_count = Testresult.objects.filter(selcted_image__istartswith='Real').count()
-	fake_count = Testresult.objects.filter(selcted_image__istartswith='Fake').count()
-	avg_confidence = Testresult.objects.all().aggregate(Avg('confidence'))
-	# real_avg =real_avg_obj.avg()
-	# real_count = real_obj
+	dataset_list = ['cbis','mura','luna','chexpert','isles18','isles17','mrnet','chaosct','chaosmr']
+
+	for dataset_name in dataset_list:
+		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Real').count()
+		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Fake').count()
+		avg_confidence = Testresult.objects.filter(dataset__istartswith=dataset_name).aggregate(Avg('confidence'))
+		response_element = ResponseSheet.objects.filter(dataset__istartswith=dataset_name)
+		for elem in response_element:
+			elem.total_pass = real_count
+			elem.total_fail = fake_count
+			if avg_confidence['confidence__avg']:
+				elem.avg_confidence = avg_confidence['confidence__avg']
+			else:
+				elem.avg_confidence = 0
+			
+			elem.save(update_fields=['total_pass','total_fail','avg_confidence'])
+
+	response_table = ResponseSheet.objects.all()
+
 	context = {
-	'real_count' : real_count,
-	'fake_count' : fake_count,
-	'avg_confidence' : avg_confidence['confidence__avg'],
+	'response_table' : response_table,
 	'display' : "none",
-
-
 	}
 
 	if request.method == 'POST':
 			context = {
+			'response_table' : response_table,
 			'query_results' : t_response,
-			'real_count' : real_count,
-			'fake_count' : fake_count,
-			'avg_confidence' : avg_confidence['confidence__avg'],
 			'display' : "block",
 
 
@@ -189,3 +188,5 @@ def response_func(request):
 
 
 	return render(request,'response.html',context)
+
+

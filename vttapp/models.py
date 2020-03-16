@@ -54,3 +54,12 @@ class UserProgress(models.Model):
 	def __str__(self):
 
 		return f'progress updated'
+
+class ResponseSheet(models.Model):
+	dataset = models.CharField(max_length=50)
+	total_pass = models.IntegerField(default=0)
+	total_fail = models.IntegerField(default=0)
+	avg_confidence = models.IntegerField(default=0)
+
+	def __str__(self):
+		return f'Response table updated'
