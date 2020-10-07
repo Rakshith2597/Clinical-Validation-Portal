@@ -189,19 +189,21 @@ def response_func(request):
 	dataset_list = ['cbis','mura','luna','chexpert','isles18','isles17','mrnet','chaosct','chaosmr']
 
 	for dataset_name in dataset_list:
-		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Real').count()
-		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Fake').count()
+		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Miriad').count()
+		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Jpeg').count()
+		fake_count2 = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='J2k').count()
 		avg_confidence = Testresult.objects.filter(dataset__istartswith=dataset_name).aggregate(Avg('confidence'))
 		response_element = ResponseSheet.objects.filter(dataset__istartswith=dataset_name)
 		for elem in response_element:
 			elem.total_pass = real_count
 			elem.total_fail = fake_count
+			elem.total_fail2 = fake_count2
 			if avg_confidence['confidence__avg']:
 				elem.avg_confidence = avg_confidence['confidence__avg']
 			else:
 				elem.avg_confidence = 0
 			
-			elem.save(update_fields=['total_pass','total_fail','avg_confidence'])
+			elem.save(update_fields=['total_pass','total_fail','total_fail2','avg_confidence'])
 
 	response_table = ResponseSheet.objects.all()
 
