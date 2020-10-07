@@ -62,6 +62,8 @@ class ResponseSheet(models.Model):
 	dataset = models.CharField(max_length=50)
 	total_pass = models.IntegerField(default=0)
 	total_fail = models.IntegerField(default=0)
+	total_fail2 = models.IntegerField(default=0)
+	option3_count = models.IntegerField(default=0)
 	avg_confidence = models.IntegerField(default=0)
 
 	def __str__(self):

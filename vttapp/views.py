@@ -17,11 +17,11 @@ def XR_func(request):
 	usr_progress = usr_row.xr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = XR.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.our_image.url
+		ourimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 
-		ourimg_name = img_field.our_image.name
+		ourimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
@@ -75,11 +75,11 @@ def MR_func(request):
 	usr_progress = usr_row.mr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = MR.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.our_image.url
+		ourimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 
-		ourimg_name = img_field.our_image.name
+		ourimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
@@ -133,11 +133,11 @@ def CT_func(request):
 	usr_progress = usr_row.ct_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = CT.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.our_image.url
+		ourimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 
-		ourimg_name = img_field.our_image.name
+		ourimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
@@ -192,18 +192,20 @@ def response_func(request):
 		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Miriad').count()
 		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Jpeg').count()
 		fake_count2 = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='J2k').count()
+		option3_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Equal').count()
 		avg_confidence = Testresult.objects.filter(dataset__istartswith=dataset_name).aggregate(Avg('confidence'))
 		response_element = ResponseSheet.objects.filter(dataset__istartswith=dataset_name)
 		for elem in response_element:
 			elem.total_pass = real_count
 			elem.total_fail = fake_count
 			elem.total_fail2 = fake_count2
+			elem.option3_count = option3_count
 			if avg_confidence['confidence__avg']:
 				elem.avg_confidence = avg_confidence['confidence__avg']
 			else:
 				elem.avg_confidence = 0
 			
-			elem.save(update_fields=['total_pass','total_fail','total_fail2','avg_confidence'])
+			elem.save(update_fields=['total_pass','total_fail','total_fail2','option3_count','avg_confidence'])
 
 	response_table = ResponseSheet.objects.all()
 
