@@ -14,6 +14,14 @@
 
 #myImg2:hover {opacity: 0.7;}
 
+#myImg3 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg3:hover {opacity: 0.7;}
+
 
 /* The Modal (background) */
 .modal {
@@ -51,6 +59,17 @@
 }
 
 #caption2 {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 10px;
+}
+
+#caption3 {
   margin: auto;
   display: block;
   width: 80%;
@@ -110,10 +129,10 @@
     grid-template-columns: repeat(4, 1fr);  
     grid-template-rows: 50px 100px 100px 50px;  
     grid-template-areas:  
-        ". . . . "  
-        "h h c c "
-        "h h c c "  
-        ". . . . "  
+        ". . . . . . "  
+        "h h c c g g "
+        "h h c c g g "  
+        ". . . . . . "  
         ;}
 
 .image1 {  
@@ -124,3 +143,6 @@
     grid-area: c;  
 }
 
+.image3 {  
+    grid-area: g;  
+}

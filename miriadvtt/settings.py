@@ -25,7 +25,7 @@ SECRET_KEY = '%t31#%c%#(6)7%h08ftsr0q_1nm%9_32f=i7j(*)kn63j^1p6*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.9.7.78']
+ALLOWED_HOSTS = ['10.9.7.72','127.0.0.1','0.0.0.0']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vttapp',
+    'homeapp',
 ]
 
 MIDDLEWARE = [

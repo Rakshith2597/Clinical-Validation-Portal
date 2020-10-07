@@ -22,12 +22,34 @@
 
 {% block heading %}
 {% endblock %}
-
 {% block userdetails%}
 
-{% if user.is_authenticated %}
-<p> Welcome Dr.{{ user.get_username }}, </p>
+<div class="row">
+  <div class="col-sm-2" >
+    {% if user.is_authenticated %}
+<p> <b> Welcome Dr.{{ user.get_username }}, </b></p>
 {% endif %} 
+  </div>
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-6" >
+
+  <b> Current Modality: {{ action }} </b>
+  </div>
+
+  <div class="col-sm-1">
+  </div>
+
+  <div class="col-sm-4" >
+  <b>User progress:</b>
+  <progress id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
+  {{usr_progress}} / {{num_pairs}}
+
+  </div>
+</div>
+
+
+
 
 {% endblock %}
 {% block tiles %}
@@ -39,7 +61,7 @@
   </span>
 
   <span class="image">
-    <img id="myImg1" src="{{image1_url}}" alt="" height="326" width="512" data-toggle="tooltip" title="Click to enlarge" />
+    <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
       <div class="content">
       <p align="center"> Image (a) </p>
     </div>
@@ -47,16 +69,31 @@
 
   <div id="myModal1" class="modal">
   <span class="close">&times;</span>
-  <img class="modal-content" id="img01 ">
+  <img class="modal-content" id="img01">
 
-</div>
+  </div>
+ 
+
+  <span class="image">
+    <img id="myImg3" src="{{image3_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
+      <div class="content">
+      <p align="center"> Original </p>
+    </div>
+  </span>
+
+  <div id="myModal3" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img03">
+
+  </div>
  
   <span class="image">
-    <img id="myImg2" src="{{image2_url}}" alt="" height="326" width="512" data-toggle="tooltip" title="Click to enlarge"/>
+    <img id="myImg2" src="{{image2_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge"/>
       <div class="content">
       <p align="center"> Image (b) </p>
     </div>
   </span>
+
   <div id="myModal2" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="img02">
@@ -85,10 +122,10 @@ $(document).ready(function(){
 $host = $('[mag-thumb="inner-inline"]');
 $host.mag();
 </script>
-<form method="post" action="{% url 'XR' %}">
+<form method="post" action="{% url 'XR_test' %}">
     {% csrf_token %}
     <div class="form-group row">
-      <font color="black">Which image do you think was compressed? Select the option below and slide the confidence meter.</font> 
+      <font color="black">Which image is closest to the original image? Select the option below and slide the confidence meter.</font> 
     </div>
   </Br>
     <fieldset class="form-group row">
@@ -119,6 +156,10 @@ $host.mag();
       </div>
     </fieldset>
 </form>
+
+
+
+
 
   </div>
 
@@ -157,6 +198,12 @@ $host.mag();
   background: #4CAF50;
   cursor: pointer;
 }
+
+/*#footer {
+    padding: 5em 0 6em 0 ;
+    background-color:  #ff6600;
+  }*/
+
 </style>
 
 <script>

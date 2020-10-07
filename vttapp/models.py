@@ -5,8 +5,9 @@ class MR(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
-	real_image = models.FileField(upload_to='realimage',blank=False)
-	fake_image = models.FileField(upload_to='fakeimage',blank=False)
+	our_image = models.FileField(upload_to='realimage',blank=False)
+	jpeg_image = models.FileField(upload_to='fakeimage',blank=False)
+	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
 		'''String representing the model object'''
@@ -16,8 +17,9 @@ class CT(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
-	real_image = models.FileField(upload_to='realimage',blank=False)
-	fake_image = models.FileField(upload_to='fakeimage',blank=False)
+	our_image = models.FileField(upload_to='realimage',blank=False)
+	jpeg_image = models.FileField(upload_to='fakeimage',blank=False)
+	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
 		'''String representing the model object'''
@@ -27,8 +29,9 @@ class XR(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
-	real_image = models.FileField(upload_to='realimage',blank=False)
-	fake_image = models.FileField(upload_to='fakeimage',blank=False)
+	our_image = models.FileField(upload_to='realimage',blank=False)
+	jpeg_image = models.FileField(upload_to='fakeimage',blank=False)
+	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
 		'''String representing the model object'''

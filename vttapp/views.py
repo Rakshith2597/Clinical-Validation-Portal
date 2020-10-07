@@ -17,26 +17,37 @@ def XR_func(request):
 	usr_progress = usr_row.xr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = XR.objects.get(q_id = usr_progress)
-		realimg_url = img_field.real_image.url
-		fakeimg_url = img_field.fake_image.url
-		realimg_name = img_field.real_image.name
-		fakeimg_name = img_field.fake_image.name
+		ourimg_url = img_field.our_image.url
+		jpegimg_url = img_field.jpeg_image.url
+		originalimg_url = img_field.original_image.url
+
+		ourimg_name = img_field.our_image.name
+		jpegimg_name = img_field.jpeg_image.name
+		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : realimg_url,
-			'image2_url' : fakeimg_url,
-			'image1_name' : realimg_name,
-			'image2_name' : fakeimg_name,
+			'image1_url' : ourimg_url,
+			'image2_url' : jpegimg_url,
+			'image3_url' : originalimg_url,
+ 			'image1_name' : ourimg_name,
+			'image2_name' : jpegimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
 			'action' : "XR",
 			}
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : fakeimg_url,
-			'image2_url' : realimg_url,
-			'image1_name' : fakeimg_name,
-			'image2_name' : realimg_name,
+			'image1_url' : jpegimg_url,
+			'image2_url' : ourimg_url,
+			'image3_url' : originalimg_url,
+			'image1_name' : jpegimg_name,
+			'image2_name' : ourimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
 			'action' : "XR",
 			}	
 
@@ -64,28 +75,39 @@ def MR_func(request):
 	usr_progress = usr_row.mr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = MR.objects.get(q_id = usr_progress)
-		realimg_url = img_field.real_image.url
-		fakeimg_url = img_field.fake_image.url
-		realimg_name = img_field.real_image.name
-		fakeimg_name = img_field.fake_image.name
+		ourimg_url = img_field.our_image.url
+		jpegimg_url = img_field.jpeg_image.url
+		originalimg_url = img_field.original_image.url
+
+		ourimg_name = img_field.our_image.name
+		jpegimg_name = img_field.jpeg_image.name
+		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : realimg_url,
-			'image2_url' : fakeimg_url,
-			'image1_name' : realimg_name,
-			'image2_name' : fakeimg_name,
-			'action' : "XR",
+			'image1_url' : ourimg_url,
+			'image2_url' : jpegimg_url,
+			'image3_url' : originalimg_url,
+ 			'image1_name' : ourimg_name,
+			'image2_name' : jpegimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
+			'action' : "MR",
 			}
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : fakeimg_url,
-			'image2_url' : realimg_url,
-			'image1_name' : fakeimg_name,
-			'image2_name' : realimg_name,
-			'action' : "XR",
-			}	
+			'image1_url' : jpegimg_url,
+			'image2_url' : ourimg_url,
+			'image3_url' : originalimg_url,
+			'image1_name' : jpegimg_name,
+			'image2_name' : ourimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
+			'action' : "MR",
+			}
 
 
 		if request.method == 'POST':
@@ -111,27 +133,38 @@ def CT_func(request):
 	usr_progress = usr_row.ct_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = CT.objects.get(q_id = usr_progress)
-		realimg_url = img_field.real_image.url
-		fakeimg_url = img_field.fake_image.url
-		realimg_name = img_field.real_image.name
-		fakeimg_name = img_field.fake_image.name
+		ourimg_url = img_field.our_image.url
+		jpegimg_url = img_field.jpeg_image.url
+		originalimg_url = img_field.original_image.url
+
+		ourimg_name = img_field.our_image.name
+		jpegimg_name = img_field.jpeg_image.name
+		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : realimg_url,
-			'image2_url' : fakeimg_url,
-			'image1_name' : realimg_name,
-			'image2_name' : fakeimg_name,
-			'action' : "XR",
+			'image1_url' : ourimg_url,
+			'image2_url' : jpegimg_url,
+			'image3_url' : originalimg_url,
+ 			'image1_name' : ourimg_name,
+			'image2_name' : jpegimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
+			'action' : "CT",
 			}
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : fakeimg_url,
-			'image2_url' : realimg_url,
-			'image1_name' : fakeimg_name,
-			'image2_name' : realimg_name,
-			'action' : "XR",
+			'image1_url' : jpegimg_url,
+			'image2_url' : ourimg_url,
+			'image3_url' : originalimg_url,
+			'image1_name' : jpegimg_name,
+			'image2_name' : ourimg_name,
+			'image3_name' : originalimg_name,
+			'usr_progress' : usr_progress,
+			'num_pairs' : num_pairs,
+			'action' : "CT",
 			}	
 
 

@@ -3,8 +3,8 @@
 {% block heading %}
 <header>
 	<h1> Project MIRIAD <br />
-	Clinical validation by <a href="https://en.wikipedia.org/wiki/Visual_Turing_Test">Visual Turing Test</a>.</h1>
-	<p>Select a modality from below on which you wish to start the test. Enter the username and password provided to you whenever prompted.</p>
+	Clinical Validation Portal.</h1>
+	<p>Select a work package from below on which you wish to start the test. Enter the username and password provided to you whenever prompted.</p>
 </header>
 
 {% endblock %}
@@ -15,35 +15,15 @@
 	<span class="image">
 		<img src="{% static 'images/pic09.jpg' %}" alt="" />
 	</span>
-	<a href="{% url 'CT_test' %}">
-		<h2>CT</h2>
+	<a href="{% url 'WP1' %}">
+		<h2>WP1</h2>
+		<h3>Compression</h3>
 		<div class="content">
-			<p>Click to start test for CT images.</p>
+			<p>Click to start test for WP1.</p>
 		</div>
 	</a>
 </article>
-<article class="style5">
-	<span class="image">
-		<img src="{% static 'images/pic10.jpg' %}" alt="" />
-	</span>
-	<a href="{% url 'MR_test' %}">
-		<h2>MR</h2>
-		<div class="content">
-			<p>Click to start test for MR images.</p>
-		</div>
-	</a>
-</article>
-<article class="style6">
-	<span class="image">
-		<img src="{% static 'images/pic11.jpg' %}" alt="" />
-	</span>
-	<a href="{% url 'XR_test' %}">
-		<h2>XR</h2>
-		<div class="content">
-			<p>Click to start test for XR images.</p>
-		</div>
-	</a>
-</article>
+
 {% endblock %}
 
 {%block detailedtable%}

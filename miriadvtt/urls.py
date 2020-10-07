@@ -19,12 +19,20 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from homeapp import views as homeviews
+from vttapp import views as vttappviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vttapp/', include('vttapp.urls')),
-    path('', RedirectView.as_view(url='vttapp/', permanent=True)),
+    path('vttapp/', vttappviews.index, name='index1'),
+    path('homeapp/',homeviews.index, name='index'),
+    path('WP1/',homeviews.WP1, name='WP1'),
+    path('CT_test', vttappviews.CT_func, name='CT_test'),
+    path('MR_test', vttappviews.MR_func, name='MR_test'),
+    path('XR_test', vttappviews.XR_func, name='XR_test'),
+    # path('response/', views.detail_response_func, name='RF'),
+    path('response/', vttappviews.response_func, name='RF'),
+    path('', RedirectView.as_view(url='homeapp/')),
 
 ]
 
