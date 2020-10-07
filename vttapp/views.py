@@ -189,10 +189,10 @@ def response_func(request):
 	dataset_list = ['cbis','mura','luna','chexpert','isles18','isles17','mrnet','chaosct','chaosmr']
 
 	for dataset_name in dataset_list:
-		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Miriad').count()
-		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Jpeg').count()
-		fake_count2 = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='J2k').count()
-		option3_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__istartswith='Equal').count()
+		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Ours').count()
+		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Jpeg').count()
+		fake_count2 = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='J2k').count()
+		option3_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Equal').count()
 		avg_confidence = Testresult.objects.filter(dataset__istartswith=dataset_name).aggregate(Avg('confidence'))
 		response_element = ResponseSheet.objects.filter(dataset__istartswith=dataset_name)
 		for elem in response_element:
