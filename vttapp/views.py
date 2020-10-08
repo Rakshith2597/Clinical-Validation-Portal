@@ -17,21 +17,21 @@ def XR_func(request):
 	usr_progress = usr_row.xr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = XR.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.miriad_image.url
+		miriadimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 		organ = img_field.organ
 
-		ourimg_name = img_field.miriad_image.name
+		miriadimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : ourimg_url,
+			'image1_url' : miriadimg_url,
 			'image2_url' : jpegimg_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : ourimg_name,
+ 			'image1_name' : miriadimg_name,
 			'image2_name' : jpegimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
@@ -43,10 +43,10 @@ def XR_func(request):
 			context = {
 			'num_pairs' : num_pairs,
 			'image1_url' : jpegimg_url,
-			'image2_url' : ourimg_url,
+			'image2_url' : miriadimg_url,
 			'image3_url' : originalimg_url,
 			'image1_name' : jpegimg_name,
-			'image2_name' : ourimg_name,
+			'image2_name' : miriadimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -78,21 +78,21 @@ def MR_func(request):
 	usr_progress = usr_row.mr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = MR.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.miriad_image.url
+		miriadimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 		organ = img_field.organ
 
-		ourimg_name = img_field.miriad_image.name
+		miriadimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : ourimg_url,
+			'image1_url' : miriadimg_url,
 			'image2_url' : jpegimg_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : ourimg_name,
+ 			'image1_name' : miriadimg_name,
 			'image2_name' : jpegimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
@@ -104,10 +104,10 @@ def MR_func(request):
 			context = {
 			'num_pairs' : num_pairs,
 			'image1_url' : jpegimg_url,
-			'image2_url' : ourimg_url,
+			'image2_url' : miriadimg_url,
 			'image3_url' : originalimg_url,
 			'image1_name' : jpegimg_name,
-			'image2_name' : ourimg_name,
+			'image2_name' : miriadimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -144,7 +144,7 @@ def CT_func(request):
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 
-		ourimg_name = img_field.miriad_image.name
+		miriadimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
@@ -165,10 +165,10 @@ def CT_func(request):
 			context = {
 			'num_pairs' : num_pairs,
 			'image1_url' : jpegimg_url,
-			'image2_url' : ourimg_url,
+			'image2_url' : miriadimg_url,
 			'image3_url' : originalimg_url,
 			'image1_name' : jpegimg_name,
-			'image2_name' : ourimg_name,
+			'image2_name' : miriadimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
