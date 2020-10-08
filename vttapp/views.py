@@ -20,6 +20,7 @@ def XR_func(request):
 		ourimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
+		organ = img_field.organ
 
 		ourimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
@@ -36,6 +37,7 @@ def XR_func(request):
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "XR",
+			'organ': organ,
 			}
 		else:
 			context = {
@@ -49,6 +51,7 @@ def XR_func(request):
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "XR",
+			'organ': organ,
 			}	
 
 
@@ -78,6 +81,7 @@ def MR_func(request):
 		ourimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
+		organ = img_field.organ
 
 		ourimg_name = img_field.miriad_image.name
 		jpegimg_name = img_field.jpeg_image.name
@@ -94,6 +98,7 @@ def MR_func(request):
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "MR",
+			'organ': organ,
 			}
 		else:
 			context = {
@@ -107,6 +112,7 @@ def MR_func(request):
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "MR",
+			'organ': organ,
 			}
 
 
@@ -133,7 +139,8 @@ def CT_func(request):
 	usr_progress = usr_row.ct_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = CT.objects.get(q_id = usr_progress)
-		ourimg_url = img_field.miriad_image.url
+		organ = img_field.organ
+		miriadimg_url = img_field.miriad_image.url
 		jpegimg_url = img_field.jpeg_image.url
 		originalimg_url = img_field.original_image.url
 
@@ -143,15 +150,16 @@ def CT_func(request):
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : ourimg_url,
+			'image1_url' : miriadimg_url,
 			'image2_url' : jpegimg_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : ourimg_name,
+ 			'image1_name' : miriadimg_name,
 			'image2_name' : jpegimg_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "CT",
+			'organ': organ,
 			}
 		else:
 			context = {
@@ -165,6 +173,7 @@ def CT_func(request):
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
 			'action' : "CT",
+			'organ': organ,
 			}	
 
 

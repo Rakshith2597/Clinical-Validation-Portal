@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% load static %}
 
 
@@ -25,97 +25,49 @@
 
 {% block userdetails%}
 
-{% if user.is_authenticated %}
-<p> Welcome Dr.{{ user.get_username }}, </p>
-{% block userdetails%}
-
 <div class="row">
-  <div class="col-sm-2" >
+  <div class="col-sm-3" >
     {% if user.is_authenticated %}
 <p> <b> Welcome Dr.{{ user.get_username }}, </b></p>
 {% endif %} 
   </div>
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-6" >
 
-  <b> Current Modality: {{ action }} </b>
-  </div>
+  <div class="col-sm-3" >
 
-  <div class="col-sm-1">
+  <b> Modality: {{ action }} </b>
   </div>
 
-  <div class="col-sm-4" >
+  <div class="col-sm-3">
+    <b> Organ: {{ organ }} </b>
+
+  </div>
+
+  <div class="col-sm-3" >
   <b>User progress:</b>
-  <progress id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
+  <progress class="progress-bar progress-bar-striped"  id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
   {{usr_progress}} / {{num_pairs}}
 
   </div>
 </div>
 
-
-
-
 {% endblock %}
-{% block tiles %}
 
 
 
-<div class="container_custom">  
-  <span >
-  </span>
 
-  <span class="image">
-    <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
-      <div class="content">
-      <p align="center"> Image (a) </p>
-    </div>
-  </span>
 
-  <div id="myModal1" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
+{% block appblock %}
 
-  </div>
- 
-
-  <span class="image">
-    <img id="myImg3" src="{{image3_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
-      <div class="content">
-      <p align="center"> Original </p>
-    </div>
-  </span>
-
-  <div id="myModal3" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img03">
-
-  </div>
- 
-  <span class="image">
-    <img id="myImg2" src="{{image2_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge"/>
-      <div class="content">
-      <p align="center"> Image (b) </p>
-    </div>
-  </span>
-
-  <div id="myModal2" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="img02">
-  <div id="caption2"> Image (b)</div>
-</div>
-
-</div>
-
-<div>
 <style>
 form {
-    width: 500px;
-    margin-left: 400px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    width: 98%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 </style>
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
@@ -127,46 +79,144 @@ $(document).ready(function(){
 $host = $('[mag-thumb="inner-inline"]');
 $host.mag();
 </script>
-<form method="post" action="{% url 'CT_test' %}">
-    {% csrf_token %}
-    <div class="form-group row">
-      <font color="black">Which image is closest to the original image? Select the option below and slide the confidence meter.</font> 
-    </div>
-  </Br>
-    <fieldset class="form-group row">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios1" value={{image1_name}} checked>
-            <label class="form-check-label" for="gridRadios1">
-              <font color="black">Image (a)</font> 
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios2" value={{image2_name}}>
-            <label class="form-check-label" for="gridRadios2">
-              <font color="black">Image (b)</font> 
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="50" class="slider" id="confidence" name= "confidence">
-          <p>Confidence level: <span id="demo"></span></p>
-          </div>  
-        </div>
-        <div class="col-sm-2" align="right">
-          <button type="submit" class="primary ">NEXT</button>
-        </div>
-      </div>
-    </fieldset>
-</form>
 
-  </div>
+<div>
+  <form method="post" action="{% url 'MR_test' %}">
+      {% csrf_token %}
+      <div class="row">
+        <b>
+        <p style="color:#585858"> Which of the options is closest to the original image? Select the option below and slide the confidence meter.</p> </b>
+      </div>
+
+      </Br>
+
+      <div class="row">
+
+        <div class="col-sm-auto">
+          <div class="row">
+         
+              <span class="image">
+                <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
+                  <div class="content">
+                    <b>
+                  <p align="center">(a)</p></b>
+                </div>
+              </span>
+
+              <div id="myModal1" class="modal">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="img01">
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-6">
+
+              <div class="form-check">
+              <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios1" value={{image1_name}} checked align="center">
+              <label class="form-check-label" for="gridRadios1">
+                <font color="white">Option (a)</font> 
+              </label>
+              </div>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+        </div>
+
+        <div class="col-sm-auto">
+          <div class="row">
+            <span class="image">
+              <img id="myImg3" src="{{image3_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
+                <div class="content">
+                  <b>
+                <p align="center"> Original </p></b>
+              </div>
+            </span>
+            <div id="myModal3" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img03">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-6">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios3" value="Equal">
+            <label class="form-check-label" for="gridRadios3">
+              <font color="white">Equally close</font> 
+            </label>
+            </div>
+            </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        
+
+        <div class="col-sm-auto">
+          <div class="row">
+            <span class="image">
+              <img id="myImg2" src="{{image2_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge"/>
+                <div class="content">
+                  <b>
+                <p align="center">(b) </p></b>
+              </div>
+            </span>
+            <div id="myModal2" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img02">
+            <div id="caption2"> Option (b)</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-6">
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="selcted_image" id="gridRadios2" value={{image2_name}}>
+                  <label class="form-check-label" for="gridRadios2">
+                    <font color="white">Option (b)</font> 
+                  </label>
+                </div>
+                </div>
+            <div class="col-sm-2"></div>
+          </div>
+        </div>
+
+      </div>
+      
+    </Br>
+
+      <div class="row">
+        <div class="slidecontainer">
+          <b>
+            Your confidence while making the decision:  <span id="demo"></span>
+            <input type="range" min="1" max="100" value="75" class="slider" id="confidence" name= "confidence">
+          </b>
+           
+          
+          </div>  
+      </div>
+
+      </Br>
+      </Br>
+      <div class="row">
+      <div class="col-sm-4">
+        <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">
+      </div>
+      <div class="col-sm-4" align="right">
+        <button type="submit" class="primary"> Save and Proceed</button>
+      </div>
+      <div class="col-sm-4">
+        <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">
+      </div>
+      </div>
+      
+  </form>
+</div>
 
 <style>
   .slidecontainer {
-  width: 100%; /* Width of the outside container */
+  width: 60%; /* Width of the outside container */
 }
 
 /* The slider itself */

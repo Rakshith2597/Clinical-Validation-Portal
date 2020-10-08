@@ -5,6 +5,7 @@ class MR(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
+	organ = models.CharField(max_length=50)
 	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
 	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
@@ -17,6 +18,7 @@ class CT(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
+	organ = models.CharField(max_length=50)
 	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
 	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
@@ -29,6 +31,7 @@ class XR(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
+	organ = models.CharField(max_length=50)
 	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
 	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
