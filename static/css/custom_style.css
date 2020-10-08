@@ -125,14 +125,13 @@
 
 .container_custom {  
     display: grid;  
-    grid-gap: 10px;      
+    grid-gap: 3px;      
     grid-template-columns: repeat(4, 1fr);  
-    grid-template-rows: 50px 100px 100px 50px;  
+    /*grid-template-rows: 50px 100px 100px 50px;  */
     grid-template-areas:  
-        ". . . . . . "  
-        "h h c c g g "
-        "h h c c g g "  
-        ". . . . . . "  
+        " h c g "
+        " h c g "  
+        " . . . "  
         ;}
 
 .image1 {  
