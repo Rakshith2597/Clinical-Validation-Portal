@@ -85,7 +85,7 @@ $host.mag();
       {% csrf_token %}
       <div class="row">
         <b>
-        <p style="color:#585858"> Which of the options is closest to the original image? Select the option below and slide the confidence meter.</p> </b>
+        <p style="color:#585858"> Which of the images is closest to the original(center image)? Select the option below and slide the confidence meter.</p> </b>
       </div>
 
       </Br>
@@ -97,10 +97,6 @@ $host.mag();
          
               <span class="image">
                 <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
-                  <div class="content">
-                    <b>
-                  <p align="center">(a)</p></b>
-                </div>
               </span>
 
               <div id="myModal1" class="modal">
@@ -127,10 +123,6 @@ $host.mag();
           <div class="row">
             <span class="image">
               <img id="myImg3" src="{{image3_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge" />
-                <div class="content">
-                  <b>
-                <p align="center"> Original </p></b>
-              </div>
             </span>
             <div id="myModal3" class="modal">
             <span class="close">&times;</span>
@@ -156,10 +148,6 @@ $host.mag();
           <div class="row">
             <span class="image">
               <img id="myImg2" src="{{image2_url}}" alt="" height="255" width="400" data-toggle="tooltip" title="Click to enlarge"/>
-                <div class="content">
-                  <b>
-                <p align="center">(b) </p></b>
-              </div>
             </span>
             <div id="myModal2" class="modal">
             <span class="close">&times;</span>
@@ -186,14 +174,14 @@ $host.mag();
       
     </Br>
 
-      <div class="row">
+      <div class="row inner" style="margin-left: 20%;">
         <div class="slidecontainer">
-          <b>
-            Your confidence while making the decision:  <span id="demo"></span>
-            <input type="range" min="1" max="100" value="75" class="slider" id="confidence" name= "confidence">
-          </b>
-           
-          
+          <div class="row" align="center" >
+                <b>
+                 Your confidence while making the decision:  <span id="demo"></span>  
+                <input type="range" min="1" max="100" value="75" class="slider" id="confidence" name= "confidence">
+                </b>
+          </div>
           </div>  
       </div>
 
