@@ -18,3 +18,6 @@ admin.site.register(UserProgress)
 
 from .models import ResponseSheet
 admin.site.register(ResponseSheet)
+
+from .models import UserRequest
+admin.site.register(UserRequest)

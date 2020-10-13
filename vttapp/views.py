@@ -5,6 +5,7 @@ import random
 from django.conf import settings
 from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
+from .forms import UserRegistration
 # Create your views here.
 def index(request):
 	return render(request,'index.html')
@@ -235,4 +236,60 @@ def response_func(request):
 
 	return render(request,'response.html',context)
 
+def register_user(request):
 
+	form2 = UserRegistration()
+	context = {'form': form2}
+
+	if request.method == 'POST':
+		f_instance = UserRegistration(request.POST)
+		if f_instance.is_valid():
+			new_instance = f_instance.save(commit=False)
+			new_instance.save()
+
+
+	return render(request,'register.html',context)
+
+
+def dashboard(request):
+	XR_qns = XR.objects.all().count()
+	CT_qns = CT.objects.all().count()
+	MR_qns = MR.objects.all().count()
+
+	total_qns = XR_qns+CT_qns+MR_qns
+
+	user_name = request.user
+	usr_status= UserProgress.objects.get(username=request.user)
+	XR_status = usr_status.xr_progress
+	CT_status = usr_status.ct_progress
+	MR_status = usr_status.mr_progress
+
+
+	tc_qns = XR_status+CT_status+MR_status
+	if XR_qns != 0:
+		XR_progress = (XR_status/XR_qns)*100
+	else:
+		XR_progress = 0
+	if CT_qns != 0:
+		CT_progress = (CT_status/CT_qns)*100
+	else:
+		CT_progress = 0
+	if MR_qns != 0:
+		MR_progress = (MR_status/MR_qns)*100
+	else:
+		MR_progress = 0
+
+	tc_progress = (tc_qns/total_qns)*100
+
+	context ={
+				'total_qns': total_qns,
+				'user_name': user_name,
+				'tc_qns': tc_qns,
+				'XR_progress':XR_progress,
+				'CT_progress':CT_progress,
+				'MR_progress':MR_progress,
+				'tc_progress': tc_progress,
+	}
+
+
+	return render(request,'dashboard.html',context)

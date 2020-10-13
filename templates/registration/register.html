@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block userdetails %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+  
+{% endblock %}
+
+{% block tiles %}
+
+<style>
+form {
+    width: 500px;
+    margin-left: 350px;
+}
+</style>
+  <div class="inner">
+
+  <form id= "form1" method="post" >
+    {% csrf_token %}
+
+    {{ form.first_name}}
+    <input type="submit">
+  
+</form>
+</div>
+  
+{% endblock %}
+
+{%block contact%}
+
+
+{%endblock%}

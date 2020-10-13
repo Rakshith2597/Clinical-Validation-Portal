@@ -1,5 +1,6 @@
 from django import forms
-from .models import Testresult   
+from .models import Testresult,UserRequest
+
 # class TuringTest(forms.Form):
 # 	selection = forms.ChoiceField(required=True)
 # 	confidence = forms.IntegerField(required=True)
@@ -19,6 +20,18 @@ class TuringTest(forms.ModelForm):
 	class Meta:
 		model = Testresult
 		fields = ('selcted_image', 'confidence',)
+
+class UserRegistration(forms.ModelForm):
+	first_name = forms.CharField(required=True)
+	last_name = forms.CharField(required=True)
+	designation = forms.CharField(required=True)
+	email_id = forms.CharField(required=True)
+	registration_number = forms.CharField(required=True)
+
+	class Meta:
+		model = UserRequest
+		fields = ('first_name','last_name','designation','email_id','registration_number',)
+
 
     
         
