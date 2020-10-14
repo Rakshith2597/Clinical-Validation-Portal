@@ -18,22 +18,22 @@ def XR_func(request):
 	usr_progress = usr_row.xr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = XR.objects.get(q_id = usr_progress)
-		miriadimg_url = img_field.miriad_image.url
-		jpegimg_url = img_field.jpeg_image.url
+		imageone_url = img_field.image_one.url
+		imagetwo_url = img_field.image_two.url
 		originalimg_url = img_field.original_image.url
 		organ = img_field.organ
 
-		miriadimg_name = img_field.miriad_image.name
-		jpegimg_name = img_field.jpeg_image.name
+		imageone_name = img_field.image_one.name
+		imagetwo_name = img_field.image_two.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : miriadimg_url,
-			'image2_url' : jpegimg_url,
+			'image1_url' : imageone_url,
+			'image2_url' : imagetwo_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : miriadimg_name,
-			'image2_name' : jpegimg_name,
+ 			'image1_name' : imageone_name,
+			'image2_name' : imagetwo_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -43,11 +43,11 @@ def XR_func(request):
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : jpegimg_url,
-			'image2_url' : miriadimg_url,
+			'image1_url' : imagetwo_url,
+			'image2_url' : imageone_url,
 			'image3_url' : originalimg_url,
-			'image1_name' : jpegimg_name,
-			'image2_name' : miriadimg_name,
+			'image1_name' : imagetwo_name,
+			'image2_name' : imageone_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -64,6 +64,7 @@ def XR_func(request):
 				form.selcted_image = request.POST.get('selcted_image')
 				form.username = request.user
 				form.dataset = img_field.dataset
+				form.image_quid = img_field.q_id
 				form.confidence = request.POST.get('confidence')
 				usr_row.xr_progress = usr_progress+1
 				usr_row.save(update_fields=['xr_progress'])
@@ -79,22 +80,22 @@ def MR_func(request):
 	usr_progress = usr_row.mr_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = MR.objects.get(q_id = usr_progress)
-		miriadimg_url = img_field.miriad_image.url
-		jpegimg_url = img_field.jpeg_image.url
+		imageone_url = img_field.image_one.url
+		imagetwo_url = img_field.image_two.url
 		originalimg_url = img_field.original_image.url
 		organ = img_field.organ
 
-		miriadimg_name = img_field.miriad_image.name
-		jpegimg_name = img_field.jpeg_image.name
+		imageone_name = img_field.image_one.name
+		imagetwo_name = img_field.image_two.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : miriadimg_url,
-			'image2_url' : jpegimg_url,
+			'image1_url' : imageone_url,
+			'image2_url' : imagetwo_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : miriadimg_name,
-			'image2_name' : jpegimg_name,
+ 			'image1_name' : imageone_name,
+			'image2_name' : imagetwo_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -104,11 +105,11 @@ def MR_func(request):
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : jpegimg_url,
-			'image2_url' : miriadimg_url,
+			'image1_url' : imagetwo_url,
+			'image2_url' : imageone_url,
 			'image3_url' : originalimg_url,
-			'image1_name' : jpegimg_name,
-			'image2_name' : miriadimg_name,
+			'image1_name' : imagetwo_name,
+			'image2_name' : imageone_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -125,6 +126,7 @@ def MR_func(request):
 				form.selcted_image = request.POST.get('selcted_image')
 				form.username = request.user
 				form.dataset = img_field.dataset
+				form.image_quid = img_field.q_id
 				form.confidence = request.POST.get('confidence')
 				usr_row.mr_progress = usr_progress+1
 				usr_row.save(update_fields=['mr_progress'])
@@ -141,21 +143,21 @@ def CT_func(request):
 	if usr_progress <= num_pairs-1:
 		img_field = CT.objects.get(q_id = usr_progress)
 		organ = img_field.organ
-		miriadimg_url = img_field.miriad_image.url
-		jpegimg_url = img_field.jpeg_image.url
+		imageone_url = img_field.image_one.url
+		imagetwo_url = img_field.image_two.url
 		originalimg_url = img_field.original_image.url
 
-		miriadimg_name = img_field.miriad_image.name
-		jpegimg_name = img_field.jpeg_image.name
+		imageone_name = img_field.image_one.name
+		imagetwo_name = img_field.image_two.name
 		originalimg_name = img_field.original_image.name
 		if usr_progress%3 != 0:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : miriadimg_url,
-			'image2_url' : jpegimg_url,
+			'image1_url' : imageone_url,
+			'image2_url' : imagetwo_url,
 			'image3_url' : originalimg_url,
- 			'image1_name' : miriadimg_name,
-			'image2_name' : jpegimg_name,
+ 			'image1_name' : imageone_name,
+			'image2_name' : imagetwo_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -165,11 +167,11 @@ def CT_func(request):
 		else:
 			context = {
 			'num_pairs' : num_pairs,
-			'image1_url' : jpegimg_url,
-			'image2_url' : miriadimg_url,
+			'image1_url' : imagetwo_url,
+			'image2_url' : imageone_url,
 			'image3_url' : originalimg_url,
-			'image1_name' : jpegimg_name,
-			'image2_name' : miriadimg_name,
+			'image1_name' : imagetwo_name,
+			'image2_name' : imageone_name,
 			'image3_name' : originalimg_name,
 			'usr_progress' : usr_progress,
 			'num_pairs' : num_pairs,
@@ -186,6 +188,7 @@ def CT_func(request):
 				form.selcted_image = request.POST.get('selcted_image')
 				form.username = request.user
 				form.dataset = img_field.dataset
+				form.image_quid = img_field.q_id
 				form.confidence = request.POST.get('confidence')
 				usr_row.ct_progress = usr_progress+1
 				usr_row.save(update_fields=['ct_progress'])
@@ -251,6 +254,7 @@ def register_user(request):
 	return render(request,'register.html',context)
 
 
+@login_required
 def dashboard(request):
 	XR_qns = XR.objects.all().count()
 	CT_qns = CT.objects.all().count()
@@ -288,7 +292,7 @@ def dashboard(request):
 				'XR_progress':XR_progress,
 				'CT_progress':CT_progress,
 				'MR_progress':MR_progress,
-				'tc_progress': tc_progress,
+				'tc_progress':tc_progress,
 	}
 
 

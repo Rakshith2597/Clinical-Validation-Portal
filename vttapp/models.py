@@ -1,13 +1,23 @@
 from django.db import models
 import uuid
 # Create your models here.
+
 class MR(models.Model):
 	''' Model representing Image to be displayed '''
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	organ = models.CharField(max_length=50)
-	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
-	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
+	image_one = models.FileField(upload_to='image_one',blank=False)
+	image_one_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	image_two = models.FileField(upload_to='image_two',blank=False)
+	image_two_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	alpha_value = models.FloatField(blank=True,null=True)
+	beta_value = models.FloatField(blank=True,null=True)
+	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
+	bit_depth = models.IntegerField(blank=True,null=True)
+	quantizer_bit_depth = models.IntegerField(blank=True,null=True)
+	compression_factor = models.IntegerField(blank=True,null=True)
+	quality_factor = models.IntegerField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -19,8 +29,17 @@ class CT(models.Model):
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	organ = models.CharField(max_length=50)
-	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
-	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
+	image_one = models.FileField(upload_to='image_one',blank=False)
+	image_one_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	image_two = models.FileField(upload_to='image_two',blank=False)
+	image_two_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	alpha_value = models.FloatField(blank=True,null=True)
+	beta_value = models.FloatField(blank=True,null=True)
+	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
+	bit_depth = models.IntegerField(blank=True,null=True)
+	quantizer_bit_depth = models.IntegerField(blank=True,null=True)
+	compression_factor = models.IntegerField(blank=True,null=True)
+	quality_factor = models.IntegerField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -32,8 +51,17 @@ class XR(models.Model):
 	q_id = models.IntegerField(primary_key=True)
 	dataset = models.CharField(max_length=50)
 	organ = models.CharField(max_length=50)
-	miriad_image = models.FileField(upload_to='miriadimage',blank=False)
-	jpeg_image = models.FileField(upload_to='jpegimage',blank=False)
+	image_one = models.FileField(upload_to='image_one',blank=False)
+	image_one_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	image_two = models.FileField(upload_to='image_two',blank=False)
+	image_two_format = models.CharField(choices=(('MIRIAD', 'MIRIAD'),('JPEG', 'JPEG'),('J2K', 'J2K')), max_length=10)
+	alpha_value = models.FloatField(blank=True,null=True)
+	beta_value = models.FloatField(blank=True,null=True)
+	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
+	bit_depth = models.IntegerField(blank=True,null=True)
+	quantizer_bit_depth = models.IntegerField(blank=True,null=True)
+	compression_factor = models.IntegerField(blank=True,null=True)
+	quality_factor = models.IntegerField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -43,6 +71,7 @@ class XR(models.Model):
 class Testresult(models.Model):
 	username = models.CharField(max_length=50, default="")
 	dataset = models.CharField(max_length=50, default="")
+	image_quid = models.IntegerField(default=0)
 	selcted_image = models.CharField(max_length=50, default="")
 	confidence = models.IntegerField(default=0)
 
