@@ -16,8 +16,6 @@ admin.site.register(Testresult)
 from .models import UserProgress
 admin.site.register(UserProgress)
 
-from .models import ResponseSheet
-admin.site.register(ResponseSheet)
 
 from .models import UserRequest
 admin.site.register(UserRequest)

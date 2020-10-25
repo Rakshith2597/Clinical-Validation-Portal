@@ -70,9 +70,22 @@ class XR(models.Model):
 
 class Testresult(models.Model):
 	username = models.CharField(max_length=50, default="")
+	modality = models.CharField(max_length=50, default="")
 	dataset = models.CharField(max_length=50, default="")
 	image_quid = models.IntegerField(default=0)
-	selcted_image = models.CharField(max_length=50, default="")
+	image_one = models.CharField(max_length=50, default="")
+	image_one_format = models.CharField(max_length=50, default="")
+	image_two = models.CharField(max_length=50, default="")
+	image_two_format = models.CharField(max_length=50, default="")
+	alpha_value = models.FloatField(blank=True,null=True)
+	beta_value = models.FloatField(blank=True,null=True)
+	hauffman_coding = models.CharField(max_length=50,blank=True,null=True)
+	bit_depth = models.IntegerField(blank=True,null=True)
+	quantizer_bit_depth = models.IntegerField(blank=True,null=True)
+	compression_factor = models.IntegerField(blank=True,null=True)
+	quality_factor = models.IntegerField(blank=True,null=True)
+	original_image = models.CharField(max_length=50, default="")
+	selected_image = models.CharField(max_length=50, default="")
 	confidence = models.IntegerField(default=0)
 
 	def __str__(self):
@@ -89,17 +102,6 @@ class UserProgress(models.Model):
 	def __str__(self):
 
 		return f'progress updated'
-
-class ResponseSheet(models.Model):
-	dataset = models.CharField(max_length=50)
-	total_pass = models.IntegerField(default=0)
-	total_fail = models.IntegerField(default=0)
-	total_fail2 = models.IntegerField(default=0)
-	option3_count = models.IntegerField(default=0)
-	avg_confidence = models.IntegerField(default=0)
-
-	def __str__(self):
-		return f'Response table updated'
 
 class UserRequest(models.Model):
 	first_name = models.CharField(max_length=50)

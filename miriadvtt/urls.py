@@ -32,8 +32,9 @@ urlpatterns = [
     path('XR_test', vttappviews.XR_func, name='XR_test'),
     path('register/', vttappviews.register_user, name='register'),
     path('dashboard/', vttappviews.dashboard, name='dashboard'),
+    path('dashboard_admin/', vttappviews.dashboard_admin, name='dashboard_admin'),
     # path('response/', views.detail_response_func, name='RF'),
-    path('response/', vttappviews.response_func, name='RF'),
+    # path('response/', vttappviews.response_func, name='RF'),
     path('', RedirectView.as_view(url='homeapp/')),
 
 ]

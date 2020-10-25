@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.views import generic
-from vttapp.models import MR,CT,XR,Testresult,UserProgress,ResponseSheet
+from vttapp.models import MR,CT,XR,Testresult,UserProgress,UserRequest
 import random
 from django.conf import settings
 from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistration
+from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
 	return render(request,'index.html')
@@ -61,11 +62,24 @@ def XR_func(request):
 			form = Testresult()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
-				form.selcted_image = request.POST.get('selcted_image')
+				form.selected_image = request.POST.get('selcted_image')
 				form.username = request.user
+				form.modality = "XR"
 				form.dataset = img_field.dataset
 				form.image_quid = img_field.q_id
+				form.image_one = img_field.image_one
+				form.image_one_format = img_field.image_one_format
+				form.image_two = img_field.image_two
+				form.image_two_format = img_field.image_two_format
 				form.confidence = request.POST.get('confidence')
+				form.alpha_value = img_field.alpha_value
+				form.beta_value = img_field.beta_value
+				form.hauffman_coding = img_field.hauffman_coding
+				form.bit_depth = img_field.bit_depth
+				form.quantizer_bit_depth = img_field.quantizer_bit_depth
+				form.compression_factor = img_field.compression_factor
+				form.quality_factor = img_field.quality_factor
+
 				usr_row.xr_progress = usr_progress+1
 				usr_row.save(update_fields=['xr_progress'])
 				form.save()
@@ -123,11 +137,24 @@ def MR_func(request):
 			form = Testresult()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
-				form.selcted_image = request.POST.get('selcted_image')
+				form.selected_image = request.POST.get('selcted_image')
 				form.username = request.user
+				form.modality = "MR"
 				form.dataset = img_field.dataset
 				form.image_quid = img_field.q_id
+				form.image_one = img_field.image_one.name
+				form.image_one_format = img_field.image_one_format
+				form.image_two = img_field.image_two.name
+				form.image_two_format = img_field.image_two_format
 				form.confidence = request.POST.get('confidence')
+				form.alpha_value = img_field.alpha_value
+				form.beta_value = img_field.beta_value
+				form.hauffman_coding = img_field.hauffman_coding
+				form.bit_depth = img_field.bit_depth
+				form.quantizer_bit_depth = img_field.quantizer_bit_depth
+				form.compression_factor = img_field.compression_factor
+				form.quality_factor = img_field.quality_factor
+
 				usr_row.mr_progress = usr_progress+1
 				usr_row.save(update_fields=['mr_progress'])
 				form.save()
@@ -185,59 +212,30 @@ def CT_func(request):
 			form = Testresult()
 			if request.POST.get('selcted_image') and request.POST.get('confidence'):
 
-				form.selcted_image = request.POST.get('selcted_image')
+				form.selected_image = request.POST.get('selcted_image')
 				form.username = request.user
+				form.modality = "CT"
 				form.dataset = img_field.dataset
 				form.image_quid = img_field.q_id
+				form.image_one = img_field.image_one.name
+				form.image_one_format = img_field.image_one_format
+				form.image_two = img_field.image_two.name
+				form.image_two_format = img_field.image_two_format
 				form.confidence = request.POST.get('confidence')
+				form.alpha_value = img_field.alpha_value
+				form.beta_value = img_field.beta_value
+				form.hauffman_coding = img_field.hauffman_coding
+				form.bit_depth = img_field.bit_depth
+				form.quantizer_bit_depth = img_field.quantizer_bit_depth
+				form.compression_factor = img_field.compression_factor
+				form.quality_factor = img_field.quality_factor
+
 				usr_row.ct_progress = usr_progress+1
 				usr_row.save(update_fields=['ct_progress'])
 				form.save()
 		return render(request,'app3.html',context)
 	else:
 		return render(request,'completion.html')		
-
-def response_func(request):
-	t_response = Testresult.objects.all()
-	dataset_list = ['cbis','mura','luna','chexpert','isles18','isles17','mrnet','chaosct','chaosmr']
-
-	for dataset_name in dataset_list:
-		real_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Ours').count()
-		fake_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Jpeg').count()
-		fake_count2 = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='J2k').count()
-		option3_count = Testresult.objects.filter(dataset__istartswith=dataset_name,selcted_image__icontains='Equal').count()
-		avg_confidence = Testresult.objects.filter(dataset__istartswith=dataset_name).aggregate(Avg('confidence'))
-		response_element = ResponseSheet.objects.filter(dataset__istartswith=dataset_name)
-		for elem in response_element:
-			elem.total_pass = real_count
-			elem.total_fail = fake_count
-			elem.total_fail2 = fake_count2
-			elem.option3_count = option3_count
-			if avg_confidence['confidence__avg']:
-				elem.avg_confidence = avg_confidence['confidence__avg']
-			else:
-				elem.avg_confidence = 0
-			
-			elem.save(update_fields=['total_pass','total_fail','total_fail2','option3_count','avg_confidence'])
-
-	response_table = ResponseSheet.objects.all()
-
-	context = {
-	'response_table' : response_table,
-	'display' : "none",
-	}
-
-	if request.method == 'POST':
-			context = {
-			'response_table' : response_table,
-			'query_results' : t_response,
-			'display' : "block",
-
-
-			}
-
-
-	return render(request,'response.html',context)
 
 def register_user(request):
 
@@ -297,3 +295,20 @@ def dashboard(request):
 
 
 	return render(request,'dashboard.html',context)
+
+@login_required
+def dashboard_admin(request):
+	num_users= User.objects.all().count()
+	num_requests = UserRequest.objects.all().count()
+	usr_status= UserProgress.objects.all()
+	t_response = Testresult.objects.all()
+
+	context ={
+				'user_counts': num_users,
+				'p_requests' : num_requests,
+				'usr_status' : usr_status,
+				't_response' : t_response,
+				'user_name' : request.user,
+	}
+
+	return render(request,'dashboard_admin.html',context)
