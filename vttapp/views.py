@@ -281,7 +281,7 @@ def dashboard(request):
 	else:
 		MR_progress = 0
 
-	tc_progress = (tc_qns/total_qns)*100
+	tc_progress = (tc_qns/(total_qns or not total_qns))*100
 
 	context ={
 				'total_qns': total_qns,
