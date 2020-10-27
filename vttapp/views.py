@@ -247,6 +247,7 @@ def register_user(request):
 		if f_instance.is_valid():
 			new_instance = f_instance.save(commit=False)
 			new_instance.save()
+		return render(request,'register_sucess.html')
 
 
 	return render(request,'register.html',context)
