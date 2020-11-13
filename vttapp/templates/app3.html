@@ -8,16 +8,32 @@
 {% endblock %}
 
 {% block headersection %}
-  <!-- <header id="header"> -->
-      <!-- Nav -->
-     <!--    <nav>
+  <header id="header">
+      
+        <nav>
           <ul>
             <li><a href="#menu">Menu</a></li>
           </ul>
-        </nav> -->
+        </nav>
 
-<!--     </div> -->
-  <!-- </header> -->
+    </div>
+  </header>
+
+  <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                 {% if user.is_authenticated %}
+                   <li> Welcome, {{ user.get_username }}</li>
+                   <li><a href="{% url 'logout'%}">Logout</a></li>   
+                 {% else %}
+                   <li><a href="{% url 'login'%}">Login</a></li>   
+                 {% endif %} 
+                
+              <li><a href="{% url 'index' %}">Home</a></li>
+
+            </ul>
+          </nav>
+          
 {% endblock %}
 
 {% block heading %}
