@@ -8,17 +8,25 @@
 {% endblock %}
 
 {% block headersection %}
-  <header id="header">
-      
-        <nav>
-          <ul>
-            <li><a href="#menu">Menu</a></li>
-          </ul>
-        </nav>
+<header id="header">
+            <div class="inner">
 
-    </div>
-  </header>
+              <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">
+                  <span class="symbol"><img src="{% static 'images/logo.svg' %}" alt="" /></span><span class="title">Kliv</span>
+                </a>
 
+              <!-- Nav -->
+                <nav>
+                  <ul>
+                    <li><a href="#menu">Menu</a></li>
+                  </ul>
+                </nav>
+
+            </div>
+          </header>
+          
+{% endblock %}
   <nav id="menu">
             <h2>Menu</h2>
             <ul>
@@ -33,9 +41,6 @@
 
             </ul>
           </nav>
-          
-{% endblock %}
-
 {% block heading %}
 {% endblock %}
 
