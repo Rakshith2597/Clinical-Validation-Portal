@@ -49,7 +49,7 @@
 <div class="row">
   <div class="col-sm-3" >
     {% if user.is_authenticated %}
-<p> <b> Welcome Dr.{{ user.get_username }}, </b></p>
+<p> <b> Welcome {{ user.get_username }}, </b></p>
 {% endif %} 
   </div>
 
