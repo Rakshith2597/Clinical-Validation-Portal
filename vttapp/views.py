@@ -78,7 +78,7 @@ def XR_func(request):
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
 				form.compression_factor = img_field.compression_factor
-				form.quality_factor = img_field.quality_factor
+				# form.quality_factor = img_field.quality_factor
 
 				usr_row.xr_progress = usr_progress+1
 				usr_row.save(update_fields=['xr_progress'])
@@ -153,7 +153,7 @@ def MR_func(request):
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
 				form.compression_factor = img_field.compression_factor
-				form.quality_factor = img_field.quality_factor
+				# form.quality_factor = img_field.quality_factor
 
 				usr_row.mr_progress = usr_progress+1
 				usr_row.save(update_fields=['mr_progress'])
@@ -228,7 +228,7 @@ def CT_func(request):
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
 				form.compression_factor = img_field.compression_factor
-				form.quality_factor = img_field.quality_factor
+				# form.quality_factor = img_field.quality_factor
 
 				usr_row.ct_progress = usr_progress+1
 				usr_row.save(update_fields=['ct_progress'])
