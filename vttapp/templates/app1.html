@@ -6,19 +6,40 @@
 <link rel="stylesheet" href="{% static 'css/custom_style.css' %}"  />
 
 {% endblock %}
-
 {% block headersection %}
-  <!-- <header id="header"> -->
-      <!-- Nav -->
-  <!--       <nav>
-          <ul>
-            <li><a href="#menu">Menu</a></li>
-          </ul>
-        </nav> -->
+<header id="header">
+            <div class="inner">
 
-<!--     </div> -->
-  <!-- </header> -->
+              <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">
+                  <span class="symbol"><img src="{% static 'images/logo.svg' %}" alt="" /></span><span class="title">Kliv</span>
+                </a>
+
+              <!-- Nav -->
+                <nav>
+                  <ul>
+                    <li><a href="#menu">Menu</a></li>
+                  </ul>
+                </nav>
+
+            </div>
+          </header>
+          
 {% endblock %}
+  <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                 {% if user.is_authenticated %}
+                   <li> Welcome, {{ user.get_username }}</li>
+                   <li><a href="{% url 'logout'%}">Logout</a></li>   
+                 {% else %}
+                   <li><a href="{% url 'login'%}">Login</a></li>   
+                 {% endif %} 
+                
+              <li><a href="{% url 'index' %}">Home</a></li>
+
+            </ul>
+          </nav>
 
 {% block heading %}
 {% endblock %}
