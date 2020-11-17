@@ -16,8 +16,8 @@ class MR(models.Model):
 	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
 	bit_depth = models.FloatField(blank=True,null=True)
 	quantizer_bit_depth = models.FloatField(blank=True,null=True)
-	compression_factor = models.FloatField(blank=True,null=True)
-	#quality_factor = models.FloatField(blank=True,null=True)
+	compression_factor_image1 = models.FloatField(blank=True,null=True)
+	compression_factor_image2 = models.FloatField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -38,8 +38,8 @@ class CT(models.Model):
 	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
 	bit_depth = models.FloatField(blank=True,null=True)
 	quantizer_bit_depth = models.FloatField(blank=True,null=True)
-	compression_factor = models.FloatField(blank=True,null=True)
-	#quality_factor = models.FloatField(blank=True,null=True)
+	compression_factor_image1 = models.FloatField(blank=True,null=True)
+	compression_factor_image2 = models.FloatField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -60,8 +60,8 @@ class XR(models.Model):
 	hauffman_coding = models.CharField(choices=(('Y', 'Yes'),('N', 'No')), max_length=12,blank=True,null=True)
 	bit_depth = models.FloatField(blank=True,null=True)
 	quantizer_bit_depth = models.FloatField(blank=True,null=True)
-	compression_factor = models.FloatField(blank=True,null=True)
-	#quality_factor = models.IntegerField(blank=True,null=True)
+	compression_factor_image1 = models.FloatField(blank=True,null=True)
+	compression_factor_image2 = models.FloatField(blank=True,null=True)
 	original_image = models.FileField(upload_to='originalimage',blank=False)
 
 	def __str__(self):
@@ -82,8 +82,8 @@ class Testresult(models.Model):
 	hauffman_coding = models.CharField(max_length=50,blank=True,null=True)
 	bit_depth = models.FloatField(blank=True,null=True)
 	quantizer_bit_depth = models.FloatField(blank=True,null=True)
-	compression_factor = models.FloatField(blank=True,null=True)
-	#quality_factor = models.FloatField(blank=True,null=True)
+	compression_factor_image1 = models.FloatField(blank=True,null=True)
+	compression_factor_image2 = models.FloatField(blank=True,null=True)
 	original_image = models.CharField(max_length=50, default="")
 	selected_image = models.CharField(max_length=50, default="")
 	confidence = models.IntegerField(default=0)

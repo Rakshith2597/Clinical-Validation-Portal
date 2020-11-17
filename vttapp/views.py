@@ -77,8 +77,8 @@ def XR_func(request):
 				form.hauffman_coding = img_field.hauffman_coding
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
-				form.compression_factor = img_field.compression_factor
-				# form.quality_factor = img_field.quality_factor
+				form.compression_factor_image1 = img_field.compression_factor_image1
+				form.compression_factor_image2 = img_field.compression_factor_image2
 
 				usr_row.xr_progress = usr_progress+1
 				usr_row.save(update_fields=['xr_progress'])
@@ -152,8 +152,8 @@ def MR_func(request):
 				form.hauffman_coding = img_field.hauffman_coding
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
-				form.compression_factor = img_field.compression_factor
-				# form.quality_factor = img_field.quality_factor
+				form.compression_factor_image1 = img_field.compression_factor_image1
+				form.compression_factor_image2 = img_field.compression_factor_image2
 
 				usr_row.mr_progress = usr_progress+1
 				usr_row.save(update_fields=['mr_progress'])
@@ -227,8 +227,8 @@ def CT_func(request):
 				form.hauffman_coding = img_field.hauffman_coding
 				form.bit_depth = img_field.bit_depth
 				form.quantizer_bit_depth = img_field.quantizer_bit_depth
-				form.compression_factor = img_field.compression_factor
-				# form.quality_factor = img_field.quality_factor
+				form.compression_factor_image1 = img_field.compression_factor_image1
+				form.compression_factor_image2 = img_field.compression_factor_image2
 
 				usr_row.ct_progress = usr_progress+1
 				usr_row.save(update_fields=['ct_progress'])
