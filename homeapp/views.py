@@ -6,3 +6,6 @@ def index(request):
 
 def WP1(request):
 	return redirect('/vttapp/')
+
+def WP3(request):
+	return redirect('/wp3_home/')

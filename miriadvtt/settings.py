@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vttapp',
+    'dashboard',
     'homeapp',
     'crispy_forms',
+    'WP3',
+
+
 ]
 
 MIDDLEWARE = [
