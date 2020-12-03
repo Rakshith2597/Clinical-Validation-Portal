@@ -83,7 +83,7 @@ form {
 }
 </style>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();   
 });
@@ -93,7 +93,7 @@ $(document).ready(function(){
   
 $host = $('[mag-thumb="inner-inline"]');
 $host.mag();
-</script>
+</script> -->
 
 <div>
   <form method="post" action="{% url 'wp3_test' %}">
@@ -108,14 +108,14 @@ $host.mag();
 
       <div class="row">
         <div class="col-sm-auto">
+          <!-- Question Image----->
           <div class="row">
               <span class="image">
               <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip"/>
               </span>
 
               <div id="myModal1" class="modal">
-                <span class="close">&times;
-                </span>
+                <span class="close">&times;</span>
                 <img class="modal-content" id="img01">
               </div>
           </div>
@@ -151,7 +151,6 @@ $host.mag();
               <div id="myModal2" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img02">
-                <div id="caption2"> Option (b)</div>
               </div>
 
               <div class="form-check">
@@ -168,7 +167,7 @@ $host.mag();
 
             <div>
               <span class="image">
-              <img id="myImg4" src="{{image4_url}}" alt="Image(c)" height="255" width="400" data-toggle="tooltip" />
+              <img id="myImg4" src="{{image4_url}}" alt="Image(c)" height="255" width="400" data-toggle="tooltip"/>
               </span>
               <div id="myModal4" class="modal">
                 <span class="close">&times;</span>
@@ -216,7 +215,7 @@ $host.mag();
         <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">
       </div>
       <div class="col-sm-4" align="right">
-        <button type="submit" class="primary"> Save and Proceed</button>
+        <button type="submit" > Save and Proceed</button>
       </div>
       <div class="col-sm-4">
         <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">

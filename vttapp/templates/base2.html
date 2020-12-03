@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>KLIV IIT KGP</title>
@@ -14,9 +10,6 @@
 		<link rel="stylesheet" href="{% static 'css/main2.css' %}"  />
 		<noscript><link rel="stylesheet" href="{% static '/css/noscript.css' %}" /></noscript>
 		<script src="{% static 'js/jquery.min.js' %}"></script>
-		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	</head>
 	<body>
@@ -73,9 +66,6 @@
 
 							{% endblock %}
 							{%block userdetails%}
-													<!-- 	  <ul class="sidebar-nav"> -->
-
-
 
 							{% endblock %}
 
@@ -97,10 +87,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
-<!-- 							<section>
-								
 
-							</section> -->
 							{% block footer%} {% endblock %}
 							<ul class="copyright">
 								<li>&copy; Kharagpur Learning, Imaging & Visualization (KLIV) research group. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
@@ -114,7 +101,7 @@
 		<!-- Scripts -->
 		{% block jsimport %}		{% endblock %}
 			
-			<!-- <script src="{% static 'js/jquery.poptrox.min.js' %"></script>			 -->
+		
 			<script src="{% static 'js/browser.min.js' %}"></script>
 			<script src="{% static 'js/breakpoints.min.js' %}"></script>
 			<script src="{% static 'js/util.js' %}"></script>

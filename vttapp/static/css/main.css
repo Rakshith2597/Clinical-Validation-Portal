@@ -2056,6 +2056,7 @@ input, select, textarea {
 	form {
 		margin: 0 0 2em 0;
 		overflow-x: hidden;
+		height: 80%;
 	}
 
 		form > :last-child {

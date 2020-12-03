@@ -22,6 +22,21 @@
 
 #myImg3:hover {opacity: 0.7;}
 
+#myImg4 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg4:hover {opacity: 0.7;}
+
+#myImg5 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg5:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
@@ -46,39 +61,6 @@
   max-width: 1080px;
 }
 
-/* Caption of Modal Image */
-#caption1 {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 10px;
-}
-
-#caption2 {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 10px;
-}
-
-#caption3 {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 10px;
-}
 
 /* Add Animation */
 .modal-content, #caption {  
@@ -125,14 +107,13 @@
 
 .container_custom {  
     display: grid;  
-    grid-gap: 10px;      
+    grid-gap: 3px;      
     grid-template-columns: repeat(4, 1fr);  
-    grid-template-rows: 50px 100px 100px 50px;  
+    /*grid-template-rows: 50px 100px 100px 50px;  */
     grid-template-areas:  
-        ". . . . . . "  
-        "h h c c g g "
-        "h h c c g g "  
-        ". . . . . . "  
+        " h c g "
+        " h c g "  
+        " . . . "  
         ;}
 
 .image1 {  
