@@ -34,6 +34,7 @@ urlpatterns = [
     path('CT_test', vttappviews.CT_func, name='CT_test'),
     path('MR_test', vttappviews.MR_func, name='MR_test'),
     path('XR_test', vttappviews.XR_func, name='XR_test'),
+    path('wp3_test', wp3views.wp3_test, name='wp3_test'),
     path('register/', vttappviews.register_user, name='register'),
     path('dashboard/', dashboardviews.dashboard, name='dashboard'),
     path('dashboard_admin/', dashboardviews.dashboard_admin, name='dashboard_admin'),

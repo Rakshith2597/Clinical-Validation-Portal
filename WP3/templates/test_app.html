@@ -1,0 +1,316 @@
+{% extends "base2.html" %}
+{% load static %}
+
+
+{% block importcss %}
+<link rel="stylesheet" href="{% static 'css/custom_style.css' %}"  />
+
+{% endblock %}
+{% block headersection %}
+<header id="header">
+  <div class="inner">
+
+    <!-- Logo -->
+  <a href="{% url 'index' %}" class="logo">
+    <span class="symbol"><img src="{% static 'images/logo.svg' %}" alt="" /></span><span class="title">Kliv</span>
+  </a>
+
+    <!-- Nav -->
+  <nav>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+    </ul>
+  </nav>
+
+  </div>
+</header>
+          
+{% endblock %}
+  <nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+     {% if user.is_authenticated %}
+       <li> Welcome, {{ user.get_username }}</li>
+       <li><a href="{% url 'logout'%}">Logout</a></li>   
+     {% else %}
+       <li><a href="{% url 'login'%}">Login</a></li>   
+     {% endif %} 
+        <li><a href="{% url 'index' %}">Home</a></li>
+    </ul>
+  </nav>
+
+{% block heading %}
+{% endblock %}
+
+{% block userdetails%}
+
+<div class="row">
+  <div class="col-sm-3" >
+    {% if user.is_authenticated %}
+<p> <b> Welcome {{ user.get_username }}, </b></p>
+{% endif %} 
+  </div>
+
+  <div class="col-sm-3" >
+
+  <b> Modality: {{ action }} </b>
+  </div>
+
+
+  <div class="col-sm-3" >
+  <b>User progress:</b>
+  <progress class="progress-bar progress-bar-striped"  id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
+  {{usr_progress}} / {{num_pairs}}
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block appblock %}
+
+<style>
+form {
+    width: 98%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script>
+  
+$host = $('[mag-thumb="inner-inline"]');
+$host.mag();
+</script>
+
+<div>
+  <form method="post" action="{% url 'wp3_test' %}">
+      {% csrf_token %}
+      <div class="row">
+        <b>
+        <p style="color:#585858"> Mark the decision clossness to reasoning for diagnosis of [qwerty].</p> 
+        </b>
+      </div>
+
+      </Br>
+
+      <div class="row">
+        <div class="col-sm-auto">
+          <div class="row">
+              <span class="image">
+              <img id="myImg1" src="{{image1_url}}" alt="" height="255" width="400" data-toggle="tooltip"/>
+              </span>
+
+              <div id="myModal1" class="modal">
+                <span class="close">&times;
+                </span>
+                <img class="modal-content" id="img01">
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-auto">
+          <div class="row">
+            <!-- First Image----->
+            <div>
+              <span class="image">
+              <img id="myImg3" src="{{image3_url}}" alt="Image(a)" height="255" width="400" data-toggle="tooltip" />
+              </span>
+              <div id="myModal3" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img03">
+              </div>
+
+              <div class="form-check">
+                <b>
+                Score:  <span id="demo1"></span>  
+                
+                  <input type="range" min="1" max="10" value="7" class="slider" id="score1" name= "score1">
+                </b>
+              </div>
+            </div>
+
+            <!-- Second Image----->
+
+            <div>
+              <span class="image">
+              <img id="myImg2" src="{{image2_url}}" alt="Image(b)" height="255" width="400" data-toggle="tooltip"/>
+              </span>
+              <div id="myModal2" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img02">
+                <div id="caption2"> Option (b)</div>
+              </div>
+
+              <div class="form-check">
+                <b>
+               Score:  <span id="demo2"></span>  
+               <input type="range" min="1" max="10" value="7" class="slider" id="score2" name= "score2">
+                </b>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <!-- Third Image----->
+
+            <div>
+              <span class="image">
+              <img id="myImg4" src="{{image4_url}}" alt="Image(c)" height="255" width="400" data-toggle="tooltip" />
+              </span>
+              <div id="myModal4" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img04">
+              </div>
+
+              <div class="form-check">
+                <b>
+                Score:  
+                <span id="demo3"></span>  
+                  <input type="range" min="1" max="10" value="7" class="slider" id="score3" name= "score3">
+                </b>
+              </div>
+            </div>
+
+            <!-- Fourth Image----->
+
+            <div>
+              <span class="image">
+              <img id="myImg5" src="{{image5_url}}" alt="Image(D)" height="255" width="400" data-toggle="tooltip"/>
+              </span>
+              <div id="myModal5" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img05">
+              </div>
+
+              <div class="form-check">
+                <b>
+               Score:  <span id="demo4"></span>  
+               <input type="range" min="1" max="10" value="7" class="slider" id="score4" name= "score4">
+                </b>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </Br>
+
+      </Br>
+      </Br>
+      <div class="row">
+      <div class="col-sm-4">
+        <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">
+      </div>
+      <div class="col-sm-4" align="right">
+        <button type="submit" class="primary"> Save and Proceed</button>
+      </div>
+      <div class="col-sm-4">
+        <hr width="400" style="border: 2px dashed #C0C0C0" color="#FFFFFF" size="6">
+      </div>
+      </div>
+      
+  </form>
+</div>
+
+<style>
+  .slidecontainer {
+  width: 60%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+/*#footer {
+    padding: 5em 0 6em 0 ;
+    background-color:  #ff6600;
+  }*/
+
+</style>
+
+<script>
+var slider = document.getElementById("score1");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output1.innerHTML = this.value;
+} 
+
+var slider = document.getElementById("score2");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output2.innerHTML = this.value;
+} 
+
+var slider = document.getElementById("score3");
+var output3 = document.getElementById("demo3");
+output3.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output3.innerHTML = this.value;
+} 
+
+var slider = document.getElementById("score4");
+var output4 = document.getElementById("demo4");
+output4.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output4.innerHTML = this.value;
+} 
+
+</script>  
+{% endblock %}
+
+{% block jsimport %} 
+<script src="{% static 'js/custom_script.js' %}"></script>
+
+{% endblock %}
+
