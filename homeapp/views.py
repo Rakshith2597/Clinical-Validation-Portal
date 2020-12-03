@@ -5,7 +5,7 @@ def index(request):
 	return render(request,'index_home.html')
 
 def WP1(request):
-	return redirect('/vttapp/')
+	return redirect('/wp1/')
 
 def WP3(request):
-	return redirect('/wp3_home/')
+	return redirect('/wp3/')

@@ -26,11 +26,11 @@ from WP3 import views as wp3views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vttapp/', vttappviews.index, name='index1'),
-    path('homeapp/',homeviews.index, name='index'),
+    path('wp1/', vttappviews.index, name='index1'),
+    path('home/',homeviews.index, name='index'),
     path('WP1/',homeviews.WP1, name='WP1'),
     path('WP3/',homeviews.WP3, name='WP3'),
-    path('wp3_home/',wp3views.index, name='index'),
+    path('wp3/',wp3views.index, name='index2'),
     path('CT_test', vttappviews.CT_func, name='CT_test'),
     path('MR_test', vttappviews.MR_func, name='MR_test'),
     path('XR_test', vttappviews.XR_func, name='XR_test'),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('dashboard_admin/', dashboardviews.dashboard_admin, name='dashboard_admin'),
     # path('response/', views.detail_response_func, name='RF'),
     # path('response/', vttappviews.response_func, name='RF'),
-    path('', RedirectView.as_view(url='homeapp/')),
+    path('', RedirectView.as_view(url='home/')),
 
 ]
 

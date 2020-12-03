@@ -32,10 +32,10 @@ img.onclick = function(){
 }
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close");
+var span = document.getElementsByClassName("close")[1];
 
 // When the user clicks on <span> (x), close the modal
-span[1].onclick = function() { 
+span.onclick = function() { 
   modal.style.display = "none";
 }
 
@@ -53,7 +53,7 @@ img.onclick = function(){
 }
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close");
+var span = document.getElementsByClassName("close")[2];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
@@ -74,7 +74,7 @@ img.onclick = function(){
 }
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close");
+var span = document.getElementsByClassName("close")[3];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
@@ -96,7 +96,7 @@ img.onclick = function(){
 }
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close");
+var span = document.getElementsByClassName("close")[4];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
