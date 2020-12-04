@@ -8,6 +8,7 @@ networks = (('Xception', 'Xception'),('ResNet', 'ResNet'),
 class WP3_Questions(models.Model):
 
 	q_id = models.IntegerField(primary_key=True)
+	anomaly = models.CharField(default="",max_length=16)
 	original_image = models.FileField(upload_to='image_one',blank=False)
 	image_one = models.FileField(upload_to='image_one',blank=False)
 	image_one_net = models.CharField(choices=networks, max_length=16)
@@ -27,6 +28,7 @@ class WP3_Questions(models.Model):
 class Testresult_WP3(models.Model):
 	username = models.CharField(max_length=50, default="")
 	image_quid = models.IntegerField(default=0)
+	anomaly = models.CharField(default="",max_length=16)
 	image_one = models.FileField(upload_to='image_one',blank=False)
 	image_one_net = models.CharField(choices=networks, max_length=16)
 	image_two = models.FileField(upload_to='image_two',blank=False)

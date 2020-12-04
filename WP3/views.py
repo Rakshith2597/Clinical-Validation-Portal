@@ -25,6 +25,7 @@ def wp3_test(request):
 		image_three_name = img_field.image_three.name
 		image_four_name = img_field.image_four.name
 		original_img_name = img_field.original_image.name
+		anomaly = img_field.anomaly
 
 		if usr_progress%2 != 0:
 			context = {
@@ -40,7 +41,8 @@ def wp3_test(request):
 			'image4_name' : image_four_name,
 			'original_img_name': original_img_name,
 			'usr_progress' : usr_progress,
-			'num_qstns' : num_qstns
+			'num_qstns' : num_qstns,
+			'anomaly' : anomaly
 			}
 		else:
 			context = {
@@ -56,7 +58,8 @@ def wp3_test(request):
 			'image4_name' : image_two_name,
 			'original_img_name': original_img_name,
 			'usr_progress' : usr_progress,
-			'num_qstns' : num_qstns
+			'num_qstns' : num_qstns,
+			'anomaly' : anomaly
 			}	
 
 
@@ -80,6 +83,7 @@ def wp3_test(request):
 			form.image_four = img_field.image_four
 			form.image_four_net = img_field.image_four_net
 			form.image_four_score = request.POST.get('score4')
+			form.anomaly = img_field.anomaly
 
 			usr_row.progress = usr_progress+1
 			usr_row.save(update_fields=['progress'])

@@ -52,15 +52,9 @@
   </div>
 
   <div class="col-sm-3" >
-
-  <b> Modality: {{ action }} </b>
-  </div>
-
-
-  <div class="col-sm-3" >
   <b>User progress:</b>
-  <progress class="progress-bar progress-bar-striped"  id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
-  {{usr_progress}} / {{num_pairs}}
+  <progress class="progress-bar progress-bar-striped"  id="progress_bar" max="{{num_qstns}}" value="{{usr_progress}}">  </progress>
+  {{usr_progress}} / {{num_qstns}}
 
   </div>
 </div>
@@ -100,7 +94,7 @@ $host.mag();
       {% csrf_token %}
       <div class="row">
         <b>
-        <p style="color:#585858"> Mark the decision clossness to reasoning for diagnosis of [qwerty].</p> 
+        <p style="color:#585858"> Mark the decision clossness to reasoning for diagnosis of {{anomaly}}.</p> 
         </b>
       </div>
 
@@ -118,6 +112,18 @@ $host.mag();
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img01">
               </div>
+          </div>
+
+          <div class="row">
+
+            
+
+            <p> 
+              There can be other co-morbidities which are <br>
+              <b>not</b> currently being considered.
+            </p>
+            
+
           </div>
         </div>
 
@@ -137,7 +143,7 @@ $host.mag();
                 <b>
                 Score:  <span id="demo1"></span>  
                 
-                  <input type="range" min="1" max="10" value="7" class="slider" id="score1" name= "score1">
+                  <input type="range" min="0" max="5" value="3" class="slider" id="score1" name= "score1">
                 </b>
               </div>
             </div>
@@ -156,7 +162,7 @@ $host.mag();
               <div class="form-check">
                 <b>
                Score:  <span id="demo2"></span>  
-               <input type="range" min="1" max="10" value="7" class="slider" id="score2" name= "score2">
+               <input type="range" min="0" max="5" value="3" class="slider" id="score2" name= "score2">
                 </b>
               </div>
             </div>
@@ -178,7 +184,7 @@ $host.mag();
                 <b>
                 Score:  
                 <span id="demo3"></span>  
-                  <input type="range" min="1" max="10" value="7" class="slider" id="score3" name= "score3">
+                  <input type="range" min="0" max="5" value="3" class="slider" id="score3" name= "score3">
                 </b>
               </div>
             </div>
@@ -197,11 +203,22 @@ $host.mag();
               <div class="form-check">
                 <b>
                Score:  <span id="demo4"></span>  
-               <input type="range" min="1" max="10" value="7" class="slider" id="score4" name= "score4">
+               <input type="range" min="0" max="5" value="3" class="slider" id="score4" name= "score4">
                 </b>
               </div>
             </div>
 
+          </div>
+
+          <div class="row">
+          <p>
+            <ul>
+            <i> Instructions</i> : 
+            <li><b>0</b> Indicates no similarity in reasoning.</li>
+            <li><b>5</b> Indicates highest degree of similarity.</li>
+            </ul>
+            
+          </p> 
           </div>
         </div>
       </div>

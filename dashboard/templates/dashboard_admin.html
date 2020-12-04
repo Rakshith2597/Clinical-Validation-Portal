@@ -49,10 +49,25 @@
       <hr class="sidebar-divider">
 
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'index' %}">
+        <a class="nav-link" href="{% url 'dashboard_admin' %}">
           <i class="fas fa-fw fa-house-user"></i>
           <span>HOME</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-poll"></i>
+          <span>Test Results</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Work packages</h6>
+            <a class="collapse-item" href="{% url 'dashboard_admin_wp1' %}">WP 1</a>
+            <a class="collapse-item" href="{% url 'dashboard_admin_wp3' %}">WP 3</a>
+          </div>
+        </div>
+      </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -164,8 +179,8 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            
+<!--             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -179,7 +194,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
 
@@ -193,7 +208,7 @@
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">
-                  User progress for each modality</h6>
+                  User progress for WP 1</h6>
                 </div>
                 <div class="card-body">
                 <div class="table-responsive">
@@ -224,67 +239,41 @@
 
           </div>
 
-        </div>
+          <div class="col-lg-6 mb-4">
 
-          <div class="row">
-          <div class="card shadow">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">
-              Test Results</h6>
-            </div>
-            <div class="card-body">
-            <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Modality</th>
-                    <th>Dataset</th>
-                    <th>Image A</th>
-                    <th>Image A format</th>
-                    <th>Image B</th>
-                    <th>Image B format</th>
-                    <th>Alpha Value</th>
-                    <th>Beta Value</th>
-                    <th>Hauffman_coding</th>
-                    <th>Bit_depth</th>
-                    <th>Quantizer_bit_depth</th>
-                    <th>Compression_factor</th>
-                    <th>Quality_factor</th>
-                    <th>Selected_image</th>
-                    <th>Confidence</th>
-                </tr>
-              </thead>
-              <tbody>
-                    {% for item in t_response %}
-                    <tr> 
-                        <td>{{ item.username }}</td>
-                        <td>{{ item.modality }}</td>
-                        <td>{{ item.dataset }}</td>
-                        <td>{{ item.image_one }}</td>
-                        <td>{{ item.image_one_format }}</td>
-                        <td>{{ item.image_two }}</td>
-                        <td>{{ item.image_two_format }}</td>
-                        <td>{{ item.alpha_value }}</td>
-                        <td>{{ item.beta_value }}</td>
-                        <td>{{ item.hauffman_coding }}</td>
-                        <td>{{ item.bit_depth }}</td>
-                        <td>{{ item.quantizer_bit_depth }}</td>
-                        <td>{{ item.compression_factor }}</td>
-                        <td>{{ item.quality_factor }}</td>
-                        <td>{{ item.selected_image }}</td>
-                        <td>{{ item.confidence }}</td>
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                  User progress for WP 3</h6>
+                </div>
+                <div class="card-body">
+                <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Progress</th>
 
                     </tr>
-                    {% endfor %}
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                        {% for item in usr_status2 %}
+                        <tr> 
+                            <td>{{ item.username }}</td>
+                            <td>{{ item.progress }}</td>
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+                  </table>
+                </div>
+              </div>
+              
             </div>
-            </div>
-            
-          </div>
 
           </div>
+
+        </div>
         <!-- /.container-fluid -->
 
       </div>
