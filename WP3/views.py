@@ -90,7 +90,7 @@ def wp3_test(request):
 			form.save()
 		return render(request,'test_app.html',context)
 	else:
-		return render(request,'completion.html')
+		return render(request,'completion_wp3.html')
 
 
 	return render(request,'test_app.html')
