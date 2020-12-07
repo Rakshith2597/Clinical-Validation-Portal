@@ -7,6 +7,8 @@ from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistration
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+import csv
 # Create your views here.
 def index(request):
 	return render(request,'index.html')
@@ -251,3 +253,29 @@ def register_user(request):
 
 
 	return render(request,'register.html',context)
+
+
+def export_csv_wp1(request):
+	response = HttpResponse(content_type='text/csv')
+
+	writer = csv.writer(response)
+	writer.writerow(['username','modality','dataset','image_quid',
+		'image_one','image_one_format','image_two',
+		'image_two_format','alpha_value','beta_value',
+		'hauffman_coding','bit_depth','quantizer_bit_depth',
+		'compression_factor_image1','compression_factor_image2',
+		'original_image','selected_image','confidence'
+		])
+
+	for result in Testresult.objects.all().values_list('username','modality','dataset','image_quid',
+		'image_one','image_one_format','image_two',
+		'image_two_format','alpha_value','beta_value',
+		'hauffman_coding','bit_depth','quantizer_bit_depth',
+		'compression_factor_image1','compression_factor_image2',
+		'original_image','selected_image','confidence'):
+
+		writer.writerow(result)
+
+		response['Content-Disposition'] = 'attachment; filename="wp1_results.csv"'
+
+		return response

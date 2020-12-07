@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from WP3.models import WP3_Questions,Testresult_WP3,UserProgress_WP3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+import csv
 # Create your views here.
 
 def index(request):
@@ -94,4 +96,47 @@ def wp3_test(request):
 
 
 	return render(request,'test_app.html')
+
+
+
+def export_csv_wp3(request):
+	response = HttpResponse(content_type='text/csv')
+
+	writer = csv.writer(response)
+	writer.writerow(['Username','Image_quid','Anomaly',
+		'Image_one','Image_one_net','Image_two',
+		'Image_two_net','Image_three','Image_three_net',
+		'Image_four','Image_four_net','Image_one_score',
+		'Image_two_score','Image_three_score','Image_four_score'
+		])
+
+	for result in Testresult_WP3.objects.all().values_list('username','image_quid','anomaly',
+		'image_one','image_one_net','image_two',
+		'image_two_net','image_three','image_three_net',
+		'image_four','image_four_net','image_one_score',
+		'image_two_score','image_three_score','image_four_score'):
+
+		writer.writerow(result)
+
+		response['Content-Disposition'] = 'attachment; filename="wp3_results.csv"'
+
+		return response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
