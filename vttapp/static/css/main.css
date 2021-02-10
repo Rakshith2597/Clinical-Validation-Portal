@@ -3205,7 +3205,7 @@ input, select, textarea {
 				margin-top: 5em;
 				list-style: none;
 				font-size: 0.8em;
-				color: rgba(88, 88, 88, 0.5);
+				color: rgba(0, 0, 0, 1);
 			}
 
 				#footer > .inner .copyright a {
@@ -3214,7 +3214,7 @@ input, select, textarea {
 
 				#footer > .inner .copyright li {
 					display: inline-block;
-					border-left: solid 1px rgba(88, 88, 88, 0.15);
+					border-left: solid 1px rgba(0, 0, 0, 1);
 					line-height: 1;
 					padding: 0 0 0 1em;
 					margin: 0 0 0 1em;
