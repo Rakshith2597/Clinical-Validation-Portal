@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+config.json
 
 # Backup files # 
 *.bak 
@@ -49,9 +50,11 @@ pip-delete-this-directory.txt
 .venv 
 env/ 
 venv/ 
-ENV/ 
+ENV/
+djangoenv/ 
 env.bak/ 
-venv.bak/ 
+venv.bak/
+djangoenb.bak/
 
 # mkdocs documentation 
 /site 

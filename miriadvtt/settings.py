@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import json
 
-with open('/etc/config.json') as config_file:
-    config = json.load(config_file)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print("base dir =", BASE_DIR)
 
+with open(os.path.join(BASE_DIR,'config.json')) as config_file:
+    config = json.load(config_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'homeapp',
     'crispy_forms',
     'WP3',
+    'liktertest',
 
 
 ]
