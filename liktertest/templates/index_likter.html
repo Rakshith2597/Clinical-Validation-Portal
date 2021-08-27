@@ -3,55 +3,58 @@
 {% block heading %}
 <header>
 	<h1> Project MIRIAD <br />
-	Clinical Validation Portal.</h1>
-	<p>Select a work package from below on which you wish to start the test. Enter the username and password provided to you whenever prompted.</p>
+	Clinical validation by <a href="https://en.wikipedia.org/wiki/Visual_Turing_Test">Visual Turing Test</a>.</h1>
+	<p>Select a modality from below on which you wish to start the test. Enter the username and password provided to you whenever prompted.</p>
 </header>
 
 {% endblock %}
 
 
 {% block tiles %} 
-<article class="style3">
-	<span class="image">
-		<img src="{% static 'images/pic07.jpg' %}" alt="" />
-	</span>
-	<a href="{% url 'WP1_likter' %}">
-		<h2>WP1</h2>
-		<h3>Compression</h3>
-		<h4>Likter test</h4>
-		<div class="content">
-			<p>Click to start Likter test for WP1.</p>
-		</div>
-	</a>
-</article>
-
 <article class="style1">
 	<span class="image">
 		<img src="{% static 'images/pic09.jpg' %}" alt="" />
 	</span>
-	<a href="{% url 'WP1' %}">
-		<h2>WP1</h2>
-		<h3>Compression</h3>
-		<h4>Visual Turing test</h4>
+	<a href="{% url 'CT_likter' %}">
+		<h2>CT</h2>
 		<div class="content">
-			<p>Inactive.</p>
+			<p>Click to start test for CT images.</p>
 		</div>
 	</a>
 </article>
-
-<article class="style2">
+<article class="style5">
 	<span class="image">
-		<img src="{% static 'images/pic08.jpg' %}" alt="" />
+		<img src="{% static 'images/pic10.jpg' %}" alt="" />
 	</span>
-	<a href="">
-		<h2>WP3</h2>
-		<h3>Chest XRay Screening</h3>
+	<a href="{% url 'MR_likter' %}">
+		<h2>MR</h2>
 		<div class="content">
-			<p>Portal under development.</p>
+			<p>Click to start test for MR images.</p>
 		</div>
 	</a>
 </article>
-
+<article class="style6">
+	<span class="image">
+		<img src="{% static 'images/pic11.jpg' %}" alt="" />
+	</span>
+	<a href="{% url 'XR_likter' %}">
+		<h2>XR</h2>
+		<div class="content">
+			<p>Click to start test for XR images.</p>
+		</div>
+	</a>
+</article>
+<article class="style3">
+	<span class="image">
+		<img src="{% static 'images/pic11.jpg' %}" alt="" />
+	</span>
+	<a href="{% url 'dashboard' %}">
+		<h2>Dashboard</h2>
+		<div class="content">
+			<p>Click to view dashboard.</p>
+		</div>
+	</a>
+</article>
 {% endblock %}
 
 {%block detailedtable%}
@@ -79,8 +82,10 @@ src="https://www.youtube.com/embed/I7j5x18igp4">
 		<li><a href="https://www.youtube.com/channel/UCq2X0_i9aXhiDA45MlS4XcQ" class="icon brands style2 fa-youtube"><span class="label">Youtube</span></a></li>
 		<!-- <li><a href="" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li> -->
 	</ul>
-	<h2> Register </h2>	
+		<h2> Register </h2>	
 	<p> Click <a href="{% url 'register' %}"> here</a> to register and explore the portal.</p>
+
+	
 </section>
 
 

@@ -39,7 +39,7 @@ class CT_Likter(models.Model):
 
     def __str__(self):
         '''String representing the model object'''
-        return f'MR from {self.dataset}'
+        return f'CT from {self.dataset}'
 
 class XR_Likter(models.Model):
     ''' Model representing Image to be displayed '''
@@ -59,7 +59,7 @@ class XR_Likter(models.Model):
 
     def __str__(self):
         '''String representing the model object'''
-        return f'MR from {self.dataset}'
+        return f'XR from {self.dataset}'
 
 class Testresult_Likter(models.Model):
     username = models.CharField(max_length=50, default="")

@@ -1,0 +1,218 @@
+{% extends "base2_likter.html" %}
+{% load static %}
+
+
+{% block importcss %}
+<link rel="stylesheet" href="{% static 'css/custom_style.css' %}"  />
+
+{% endblock %}
+{% block headersection %}
+<header id="header">
+            <div class="inner">
+
+              <!-- Logo -->
+                <a href="{% url 'index' %}" class="logo">
+                  <span class="symbol"><img src="{% static 'images/logo.svg' %}" alt="" /></span><span class="title">Kliv</span>
+                </a>
+
+              <!-- Nav -->
+                <nav>
+                  <ul>
+                    <li><a href="#menu">Menu</a></li>
+                  </ul>
+                </nav>
+
+            </div>
+          </header>
+          
+{% endblock %}
+  <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                 {% if user.is_authenticated %}
+                   <li> Welcome, {{ user.get_username }}</li>
+                   <li><a href="{% url 'logout'%}">Logout</a></li>   
+                 {% else %}
+                   <li><a href="{% url 'login'%}">Login</a></li>   
+                 {% endif %} 
+                
+              <li><a href="{% url 'index' %}">Home</a></li>
+
+            </ul>
+          </nav>
+
+{% block heading %}
+{% endblock %}
+
+{% block userdetails%}
+
+<div class="row">
+  <div class="col-sm-3" >
+    {% if user.is_authenticated %}
+<p> <b> Welcome {{ user.get_username }}, </b></p>
+{% endif %} 
+  </div>
+
+  <div class="col-sm-3" >
+
+  <b> Modality: {{ action }} </b>
+  </div>
+
+  <div class="col-sm-3">
+    <b> Organ: {{ organ }} </b>
+
+  </div>
+
+  <div class="col-sm-3" >
+  <b>User progress:</b>
+  <progress class="progress-bar progress-bar-striped"  id="progress_bar" max="{{num_pairs}}" value="{{usr_progress}}">  </progress>
+  {{usr_progress}} / {{num_pairs}}
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+{% block appblock %}
+
+<style>
+form {
+    width: 98%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<script>
+  
+$host = $('[mag-thumb="inner-inline"]');
+$host.mag();
+</script>
+
+<div>
+  <form method="post" action="{% url 'XR_likter' %}">
+      {% csrf_token %}
+      <div class="row">
+      <p style="color:#ffffff">Rate the perceptible difference by evaluating the picture quality
+        and rendering of pathological features on a scale from 1 to 6 defined below.</p>
+      </div>
+
+      </Br>
+
+      <div class="row">
+        <div class="col-sm-auto">
+          <div align="center">Original Image</div>
+          <div class="row">
+              <span class="image">
+                <img id="myImg1" src="{{image1_url}}" alt="" height="354" width="555" data-toggle="tooltip" title="Click to enlarge" />
+              </span>
+
+              <div id="myModal1" class="modal">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="img01">
+              </div>
+          </div>
+        </div>
+
+        <div class="col-sm-auto">
+          <div align='center'>Compressed Image </div>
+          <div class="row">
+            <span class="image">
+              <img id="myImg3" src="{{image3_url}}" alt="" height="354" width="555" data-toggle="tooltip" title="Click to enlarge" />
+            </span>
+            <div id="myModal3" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img03">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </Br>
+    <div class="row">
+      <div class="col-sm-2">
+        <table>
+          <tr>
+            <th> Category </th>
+            <th> Description </th>
+            <th> Remarks </th>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>None</td>
+            <td>No detectable difference</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Just noticeable</td>
+            <td>No loss of diagnostic information</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Conspicuous</td>
+            <td>Bordering on loss of information</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Intermediate</td>
+            <td>Subtle abnormalities could be overlooked</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Significant</td>
+            <td>Important diagnostic information could be lost,  </br>
+              image degradation impairs interpretation</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Unacceptable</td>
+            <td>Inadequate for diagnosis; </br>
+              definite loss of diagnostic informationn</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-2">
+          <label for="score">Choose a Category:</label>
+          <select name="score" id="score">
+            <option value="1">1 Unacceptable</option>
+            <option value="2">2 Significant</option>
+            <option value="3">3 Intermediate</option>
+            <option value="4">4 Conspicuous</option>
+            <option value="5">5 Just noticeable</option>
+            <option value="6">6 None</option>
+          </select>
+
+          <div class="col-sm-4" style="margin-top: 43%;">
+            <hr width="400" style="border: 2px dashed #c2d694" color="#FFFFFF" size="6">
+          </div>
+          <div class="col-sm-4" align="center">
+            <button type="submit" class="danger"> Save and Proceed</button>
+          </div>
+          <div class="col-sm-4">
+            <hr width="400" style="border: 2px dashed #c2d694" color="#FFFFFF" size="6">
+          </div>
+      </div> 
+         
+  </form>
+</div>
+
+{% endblock %}
+
+{% block jsimport %} 
+<script src="{% static 'js/custom_script_likter.js' %}"></script>
+
+{% endblock %}
+

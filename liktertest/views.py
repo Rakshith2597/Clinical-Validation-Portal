@@ -5,11 +5,12 @@ import random
 from django.conf import settings
 from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistration
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 import csv
 # Create your views here.
+def index(request):
+	return render(request,'index_likter.html')
 
 @login_required
 def XR_Likter_func(request):
@@ -71,7 +72,7 @@ def XR_Likter_func(request):
 				usr_row.xr_progress = usr_progress + 1
 				usr_row.save(update_fields=['xr_progress'])
 				form.save()
-		return render(request,'likter_xr.html',context)
+		return render(request, 'likter_xr.html', context)
 	else:
 		return render(request,'completion.html')
 
@@ -79,7 +80,7 @@ def XR_Likter_func(request):
 def CT_Likter_func(request):
 	num_pairs = CT_Likter.objects.all().count()
 	usr_row = UserProgress_Likter.objects.get(username = request.user)
-	usr_progress = usr_row.xr_progress 
+	usr_progress = usr_row.ct_progress 
 	if usr_progress <= num_pairs-1:
 		img_field = CT_Likter.objects.get(q_id = usr_progress)
 		image_url = img_field.image.url
