@@ -102,7 +102,7 @@ $host.mag();
 </script>
 
 <div>
-  <form method="post" action="{% url 'XR_likter' %}">
+  <form method="post" action="{% url 'MR_likter' %}">
       {% csrf_token %}
       <div class="row">
       <p style="color:#ffffff">Rate the perceptible difference by evaluating the picture quality
@@ -214,11 +214,26 @@ $host.mag();
           </tr>
         </table>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-2">
+          <!-- <label for="score">Choose a Category:</label>
+          <select name="score" id="score">
+            <option value="1">1 Unacceptable</option>
+            <option value="2">2 Significant</option>
+            <option value="3">3 Intermediate</option>
+            <option value="4">4 Conspicuous</option>
+            <option value="5">5 Just noticeable</option>
+            <option value="6">6 None</option>
+          </select> -->
+
+          <!-- <div class="col-sm-4" style="margin-top: 43%;">
+            <hr width="400" style="border: 2px dashed #c2d694" color="#FFFFFF" size="6">
+          </div> -->
           <div class="col-sm-4" style="margin-top: 80%; margin-left: 43%;" align="center">
             <button type="submit" class="danger"> Save and Proceed</button>
           </div>
-
+          <!-- <div class="col-sm-4">
+            <hr width="400" style="border: 2px dashed #c2d694" color="#FFFFFF" size="6">
+          </div> -->
       </div> 
          
   </form>

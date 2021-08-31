@@ -74,7 +74,7 @@ def XR_Likter_func(request):
 				form.save()
 		return render(request, 'likter_xr.html', context)
 	else:
-		return render(request,'completion.html')
+		return render(request,'completion_likter.html')
 
 @login_required
 def CT_Likter_func(request):
@@ -138,7 +138,7 @@ def CT_Likter_func(request):
 				form.save()
 		return render(request,'likter_ct.html',context)
 	else:
-		return render(request,'completion.html')
+		return render(request,'completion_likter.html')
 
 @login_required
 def MR_Likter_func(request):
@@ -202,4 +202,4 @@ def MR_Likter_func(request):
 				form.save()
 		return render(request,'likter_mr.html',context)
 	else:
-		return render(request,'completion.html')
+		return render(request,'completion_likter.html')
