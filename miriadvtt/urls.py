@@ -41,6 +41,7 @@ urlpatterns = [
     path('MR_likter', liktertestviews.MR_Likter_func, name='MR_likter'),
     path('XR_likter', liktertestviews.XR_Likter_func, name='XR_likter'),
     path('wp1_likter/', liktertestviews.index, name='index3'),
+    path('export_csv_wp1_likert/', liktertestviews.export_csv_wp1_likert, name='export_csv_wp1_likert'),
     path('wp3_test', wp3views.wp3_test, name='wp3_test'),
     path('wp3/', wp3views.index, name='index2'),
     path('export_csv_wp3/', wp3views.export_csv_wp3, name='export_csv_wp3'),
@@ -48,6 +49,7 @@ urlpatterns = [
     path('dashboard_admin/', dashboardviews.dashboard_admin, name='dashboard_admin'),
     path('dashboard_admin_wp1/', dashboardviews.dashboard_admin_wp1, name='dashboard_admin_wp1'),
     path('dashboard_admin_wp3/', dashboardviews.dashboard_admin_wp3, name='dashboard_admin_wp3'),
+    path('dashboard_admin_wp1_likert/', dashboardviews.dashboard_admin_wp1_likert, name='dashboard_admin_wp1_likert'),
     
     
     # path('response/', views.detail_response_func, name='RF'),

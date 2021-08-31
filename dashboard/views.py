@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from vttapp.models import MR,CT,XR,Testresult,UserProgress,UserRequest
+from vttapp.models import MR, CT, XR,Testresult, UserProgress, UserRequest
 from WP3.models import UserProgress_WP3,Testresult_WP3
+from liktertest.models import UserProgress_Likter, Testresult_Likter
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -55,6 +56,7 @@ def dashboard_admin(request):
 	num_requests = UserRequest.objects.all().count()
 	usr_status= UserProgress.objects.all()
 	usr_status2= UserProgress_WP3.objects.all()
+	usr_status3 = UserProgress_Likter.objects.all()
 	
 
 	context ={
@@ -62,6 +64,7 @@ def dashboard_admin(request):
 				'p_requests' : num_requests,
 				'usr_status' : usr_status,
 				'usr_status2' : usr_status2,
+				'usr_status3' :usr_status3,
 				'user_name' : request.user,
 	}
 
@@ -84,6 +87,23 @@ def dashboard_admin_wp1(request):
 	}
 
 	return render(request,'dashboard_admin_wp1.html',context)
+
+@login_required
+def dashboard_admin_wp1_likert(request):
+	num_users= User.objects.all().count()
+	num_requests = UserRequest.objects.all().count()
+	usr_status= UserProgress_Likter.objects.all()
+	t_response = Testresult_Likter.objects.all()
+
+	context ={
+				'user_counts': num_users,
+				'p_requests' : num_requests,
+				'usr_status' : usr_status,
+				't_response' : t_response,
+				'user_name' : request.user,
+	}
+
+	return render(request,'dashboard_admin_wp1_likert.html',context)
 
 @login_required
 def dashboard_admin_wp3(request):

@@ -64,7 +64,6 @@
             <h6 class="collapse-header">Work packages</h6>
             <a class="collapse-item" href="{% url 'dashboard_admin_wp1' %}">WP 1</a>
             <a class="collapse-item" href="{% url 'dashboard_admin_wp3' %}">WP 3</a>
-            <a class="collapse-item" href="{% url 'dashboard_admin_wp1_likert' %}">WP 1 Likert</a>
           </div>
         </div>
       </li>
@@ -142,6 +141,7 @@
           <!-- Content Row -->
           <div class="row">
 
+            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -158,6 +158,7 @@
               </div>
             </div>
 
+            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -178,23 +179,6 @@
               </div>
             </div>
 
-            
-<!--             <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of datasets</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">9</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
           </div>
 
           <!-- Content Row -->
@@ -207,7 +191,7 @@
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">
-                  User progress for WP 1</h6>
+                  User progress for each modality</h6>
                 </div>
                 <div class="card-body">
                 <div class="table-responsive">
@@ -238,80 +222,59 @@
 
           </div>
 
-          <div class="col-lg-6 mb-4">
+        </div>
 
-              <!-- Project Card Example -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">
-                  User progress for WP 3</h6>
-                </div>
-                <div class="card-body">
-                <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>Progress</th>
+          <div class="row">
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h6 class="m-0 font-weight-bold text-primary">
+              Test Results</h6>
+              <a href="{% url 'export_csv_wp1_likert' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            </div>
+            <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Modality</th>
+                    <th>Dataset</th>
+                    <th>Image </th>
+                    <th>Image format</th>
+                    <th>Alpha Value</th>
+                    <th>Beta Value</th>
+                    <th>Hauffman_coding</th>
+                    <th>Bit_depth</th>
+                    <th>Quantizer_bit_depth</th>
+                    <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                    {% for item in t_response %}
+                    <tr> 
+                        <td>{{ item.username }}</td>
+                        <td>{{ item.modality }}</td>
+                        <td>{{ item.dataset }}</td>
+                        <td>{{ item.image }}</td>
+                        <td>{{ item.image_format }}</td>
+                        <td>{{ item.alpha_value }}</td>
+                        <td>{{ item.beta_value }}</td>
+                        <td>{{ item.hauffman_coding }}</td>
+                        <td>{{ item.bit_depth }}</td>
+                        <td>{{ item.quantizer_bit_depth }}</td>
+                        <td>{{ item.score }}</td>
 
                     </tr>
-                  </thead>
-                  <tbody>
-                        {% for item in usr_status2 %}
-                        <tr> 
-                            <td>{{ item.username }}</td>
-                            <td>{{ item.progress }}</td>
-                        </tr>
-                        {% endfor %}
-                  </tbody>
-                  </table>
-                </div>
-              </div>
-              
+                    {% endfor %}
+              </tbody>
+            </table>
             </div>
-
-          </div>
-          <div class="col-lg-6 mb-4">
-
-              <!-- Project Card Example -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">
-                  User progress for WP 1 Likert</h6>
-                </div>
-                <div class="card-body">
-                <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>MR</th>
-                        <th>CT</th>
-                        <th>XR</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                        {% for item in usr_status3 %}
-                        <tr> 
-                            <td>{{ item.username }}</td>
-                            <td>{{ item.mr_progress }}</td>
-                            <td>{{ item.ct_progress }}</td>
-                            <td>{{ item.xr_progress }}</td>
-                        </tr>
-                        {% endfor %}
-                  </tbody>
-                  </table>
-                </div>
-              </div>
-              
             </div>
-          </div>
             
-        
+          </div>
 
-        </div>
-
-        </div>
+          </div>
         <!-- /.container-fluid -->
 
       </div>

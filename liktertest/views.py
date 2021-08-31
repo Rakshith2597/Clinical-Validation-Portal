@@ -203,3 +203,28 @@ def MR_Likter_func(request):
 		return render(request,'likter_mr.html',context)
 	else:
 		return render(request,'completion_likter.html')
+
+def export_csv_wp1_likert(request):
+	response = HttpResponse(content_type='text/csv')
+
+	writer = csv.writer(response)
+	writer.writerow(['username','modality','dataset','image_quid',
+		'image','image_format',
+		'alpha_value','beta_value',
+		'hauffman_coding','bit_depth','quantizer_bit_depth',
+		'compression_factor',
+		'original_image','score'
+		])
+
+	for result in Testresult_Likter.objects.all().values_list('username','modality','dataset','image_quid',
+		'image',
+		'image_format','alpha_value','beta_value',
+		'hauffman_coding','bit_depth','quantizer_bit_depth',
+		'compression_factor',
+		'original_image','score'):
+
+		writer.writerow(result)
+
+		response['Content-Disposition'] = 'attachment; filename="wp1_likert_results.csv"'
+
+		return response
